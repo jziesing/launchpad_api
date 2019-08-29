@@ -1,8 +1,8 @@
 {
-  "name": "",
-  "description": "",
-  "scripts": {
-    },
+  "name": "LaunchPad Accelerator API",
+  "description": "Ruby on Rails API",
+  "scripts": {    
+  },
   "env": {
     "APPLICATION_ROOT_URL": {
       "required": true
@@ -32,10 +32,10 @@
       "required": true
     }
   },
-  "formation": {
-  },
   "addons": [
-    "heroku-postgresql"
+    "heroku-postgresql",
+    "launchpad",
+    "herokuconnect:demo"
   ],
   "buildpacks": [
     {
