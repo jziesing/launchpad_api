@@ -1,0 +1,21 @@
+language: ruby
+
+cache:
+  bundler: true
+
+services:
+  - postgresql
+
+addons:
+  postgresql: '9.6'
+
+before_script:
+  - bundle exec rubocop --config .rubocop.yml
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - bundle exec rake db:migrate
+
+script:
+  - bundle exec rspec
+
+notifications:
+  email: false
