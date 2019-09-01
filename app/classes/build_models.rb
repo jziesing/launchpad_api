@@ -4,6 +4,7 @@ class BuildModels
   def initialize;end
 
   def call
+    raise 'hello'
     tables = DiscoverModels.new.new_tables
     tables.each do |table|
       script = table.to_script('model', false)
@@ -16,8 +17,7 @@ class BuildModels
       columns_string = columns.join(' ')
       system("rails generate decanter #{model_name} #{columns_string}")
       system("rails generate serializer #{model_name} #{columns_string}")
-      system("rails g actions #{model_name.pluralize}")
-      
+      system("rails g actions #{model_name.pluralize}")   
     end
   end
 end
