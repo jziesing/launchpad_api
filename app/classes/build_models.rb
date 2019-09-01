@@ -1,4 +1,11 @@
+require 'rails/generators'
+
 class BuildModels
+  {
+    'timestamp without time zone' => 'datetime',
+    'timestamp without time zone' => 'datetime',
+  }
+  [, "boolean", "character varying", "timestamp without time zone", "character varying", "integer", "character varying", "text"]
   def initialize;end
 
   def call
@@ -13,13 +20,19 @@ class BuildModels
               FROM information_schema.columns
               WHERE table_schema = 'salesforce'
               AND table_name   = '#{table}'
-              ;"
-      # query = "SELECT * FROM '#{table}' WHERE false;"      
-      # connection.exec(query) do |columns|
-        # cols = columns.map { |column| column['column_name'] }
-        # cols.delete('id')                
-      # end
-      Rails::Generators.invoke('model', [table.classify])
+              ;"      
+      connection.exec(query) do |columns|
+        columns.map do |column|
+          name = column['column_name']
+          data_type = column['data_type']
+          # "#{}
+          # cols.delete('id')  
+          binding.pry
+        end              
+      end
+      
+      exec("rails g model #{table.classify}")
+      # Rails::Generators.invoke('model', [table.classify])
     end
   end
 end
