@@ -4,8 +4,8 @@ class BuildModels
   def initialize;end
 
   def call
-    raise 'hello'
     tables = DiscoverModels.new.new_tables
+    binding.pry
     tables.each do |table|
       script = table.to_script('model', false)
       script.pop
