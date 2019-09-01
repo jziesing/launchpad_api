@@ -5,16 +5,19 @@ class BuildModels
 
   def call
     tables = DiscoverModels.new.new_tables
-    binding.pry
-    tables.each do |table|
-      script = table.to_script('model', false)
-      script.pop
-      final_script = script.join
-      system(final_script)
 
+    tables.each do |table|
       columns = table.attributes.map { |attr| attr.name }
       model_name = table.name.classify
       columns_string = columns.join(' ')
+
+      script = table.to_script('model', false)
+      script.pop
+      script << ' --skip'
+      final_script = script.join
+      
+      system("rails generate salesforce_model #{table.name}")
+      system(final_script)
       system("rails generate decanter #{model_name} #{columns_string}")
       system("rails generate serializer #{model_name} #{columns_string}")
       system("rails g actions #{model_name.pluralize}")   
