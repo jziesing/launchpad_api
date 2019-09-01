@@ -1,17 +1,6 @@
-# development:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: launchpad_api_dev
-#   pool: 5
-#   host: localhost
-
 development:
   adapter: postgresql
   encoding: unicode
-  database: d2120cqo8q9ooe
-  username: pcqlgrquymfezx
-  password: 74ef9d3d6f3feb0cdd05774ac7f30c95787c5e901ccd9007f7b73d3606f969b8
-  host: ec2-54-83-9-36.compute-1.amazonaws.com
   port: 5432
   pool: 5
   schema_search_path: 'public,salesforce'
