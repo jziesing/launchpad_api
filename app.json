@@ -35,7 +35,7 @@
   "repository": "https://github.com/LaunchPadLab/launchpad_api",
   "addons": [
     "heroku-postgresql",
-    "launchpad",
+    "launchpad:test",
     "herokuconnect:demo"
   ],
   "buildpacks": [
