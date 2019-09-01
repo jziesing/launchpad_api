@@ -15,10 +15,11 @@ gem 'lp_token_auth', '~> 0.3'
 gem 'figaro', '~> 1.0'
 gem 'decanter', '~> 1.0'
 gem 'bcrypt', '~> 3.0'
-gem 'active_model_serializers', '~> 0.10'
+gem 'fast_jsonapi'
 gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'schema_to_scaffold'
+# gem 'sweet_actions'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
