@@ -16,23 +16,14 @@ gem 'figaro', '~> 1.0'
 gem 'decanter', '~> 1.0'
 gem 'bcrypt', '~> 3.0'
 gem 'active_model_serializers', '~> 0.10'
-
 gem 'puma', '~> 3.11'
-
-
-
-
-
-
 gem 'bootsnap', '>= 1.1.0', require: false
-
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'pry-rails', '~> 0.3'
   gem 'faker', '~> 1.0'
   gem 'factory_bot_rails', '~> 5.0'
-
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
