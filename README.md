@@ -8,6 +8,8 @@
 ## 1. Deploy to Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+Add the `launchpad` add-on to your Heroku App's Resources.
+
 ## 2. Configure Heroku Connect
 Follow the steps [outlined here](https://devcenter.heroku.com/articles/getting-started-with-heroku-and-connect-without-local-dev#use-heroku-connect-to-sync-with-salesforce). You'll want to sync the tables and columns needed for the application.
 
