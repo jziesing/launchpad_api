@@ -42,5 +42,20 @@ module LaunchpadApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # MAILER SETTINGS
+    # config.action_mailer.delivery_method = :smtp
+    # config.action_mailer.default_url_options = { host: ENV['APPLICATION_ROOT_URL'] }
+    # config.action_mailer.perform_deliveries = true
+  
+    # config.action_mailer.smtp_settings = {
+    #   address: ENV['EMAIL_HOST_ADDRESS'],
+    #   port: 587,
+    #   domain: ENV['APPLICATION_ROOT_URL'],
+    #   authentication: 'plain',
+    #   enable_starttls_auto: true,
+    #   user_name: ENV['EMAIL_USERNAME'],
+    #   password: ENV['EMAIL_PASSWORD']
+    # }    
   end
 end
