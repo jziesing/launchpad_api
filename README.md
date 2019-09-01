@@ -6,7 +6,9 @@
 4. [Done! Run the API](#4-view-api)
 
 ## 1. Deploy to Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+<a href="https://heroku.com/deploy?template=https://github.com/launchpadlab/launchpad_api" target="_blank">
+  <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
+</a>
 
 Add the `launchpad` add-on to your Heroku App's Resources.
 
