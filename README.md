@@ -23,7 +23,7 @@ Since the add-on provides a full web application framework, we actually start by
 4. [Done! Run the API](#4-view-api)
 
 ### 1. Deploy to Heroku
-<a href="https://heroku.com/deploy?template=https://github.com/launchpadlab/launchpad_api">
+<a href="https://heroku.com/deploy?template=https://github.com/launchpadlab/launchpad_api" target="_blank">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
 
