@@ -1,5 +1,9 @@
 
-# Getting Started
+# Overview
+The LaunchPad Accelerator allows developers to build and deploy Salesforce-integrated web applications 4x faster. After only 10 minutes of setup, you'll have a REST API for the Salesforce tables you'd like integrated with your new web application.
+
+## Setup Steps
+
 1. [Deploy API to Heroku](#1-deploy-to-heroku)
 2. [Configure Heroku Connect](#2-configure-heroku-connect)
 3. [Setup API locally](#3-setup-api-locally)
