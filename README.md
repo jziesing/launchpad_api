@@ -1,20 +1,33 @@
+## Overview
+The [LaunchPad Accelerator](https://elements.heroku.com/addons/launchpad) is an add-on that allows developers to build and deploy Salesforce-integrated web and mobile applications 4x faster
 
-# Overview
-The LaunchPad Accelerator allows developers to build and deploy Salesforce-integrated web applications 4x faster. After only 10 minutes of setup, you'll have a REST API for the Salesforce tables you'd like integrated with your new web application.
+After only a few minutes following the below setup guide, you'll have a REST API for the Salesforce tables you'd like integrated with your web or mobile application.
 
-## Setup Steps
+**Key Features:**
+
+- REST API
+- [ORM](https://guides.rubyonrails.org/active_record_basics.html)
+- Postgres Database
+- Salesforce Integration
+- [Strong Security](https://guides.rubyonrails.org/security.html)
+- [Authorization](https://github.com/CanCanCommunity/cancancan)
+- [Authentication](https://github.com/LaunchPadLab/lp_token_auth)
+
+## Provisioning the add-on
+
+Since the add-on provides a full web application framework, we actually start by deploying an app to Heroku and then later provision the add-on on that app. The LaunchPad Accelerator add-on must be used in conjuction with the app deployed from the deploy button below.
 
 1. [Deploy API to Heroku](#1-deploy-to-heroku)
 2. [Configure Heroku Connect](#2-configure-heroku-connect)
 3. [Setup API locally](#3-setup-api-locally)
 4. [Done! Run the API](#4-view-api)
 
-## 1. Deploy to Heroku
+### 1. Deploy to Heroku
 <a href="https://heroku.com/deploy?template=https://github.com/launchpadlab/launchpad_api">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
 
-## 2. Configure Heroku Connect
+### 2. Configure Heroku Connect
 1. Click "Manage App" to go to your app's Heroku dashboard
 2. Click "Resources" then "Heroku Connect"
 3. Click "Setup Connection" then "Next"
@@ -25,20 +38,50 @@ The LaunchPad Accelerator allows developers to build and deploy Salesforce-integ
 8. Pick the columns you'd like to sync
 9. Click "Save"
 
-## 3. Setup API locally
-1. Download this repository (github.com/launchpadlab/launchpad_api) as a zip file and extract it into a preferred folder on your machine
-2. `cd` into that folder and run the command `git init` to initialize the git repository
-3. In terminal, run `heroku git:remote -a APPNAME` (replace `APPNAME` with the name of the Heroku app you just deployed)
-4. In terminal, run `bundle install`
-5. In terminal, run `heroku addons:create launchpad:test`
-6. Create a new file `config/application.yml`. Run `heroku config` and copy/paste DATABASE_URL and LAUNCHPAD_LICENSE_KEY lines into config/application.yml (e.g. `LAUNCHPAD_LICENSE_KEY: lkjsdf198e3kua99sdlkfjkj`)
-7. In terminal, run `bundle exec rake db:migrate`
-8. In terminal, run `bundle exec rake db:schema:dump`
-9. In terminal, run: `bundle exec rake install_launchpad`
-10. In `app/actions/collect_action.rb`, change `authorized?` to return `true`. This is just while we test to make sure the API is working. We'll need to change this back to `false` afterwards.
-10. For each table you'd like to expose API endpoints, add the following line to routes.rb within the block `scope :v1 do`: `create_sweet_actions(:accounts)` (replace :accounts with the pluralized table name). This generates CRUD routes for each resource (show, collect, create, update, destroy). Your routes file should look something like below:
+### 3. Setup API Locally
+Download [this repository](https://github.com/launchpadlab/launchpad_api) as a zip file and extract it into a preferred folder on your machine.
 
+```term
+$ cd ~/path/to/launchpad_api
 ```
+
+```term
+$ git init
+```
+
+```term
+$ bundle install
+```
+
+In the below command, replace `APPNAME` with the name of the Heroku app you just deployed:
+
+```term
+$ heroku git:remote -a APPNAME
+```
+
+```term
+$ heroku addons:create launchpad:test
+```
+
+```term
+$ heroku config
+```
+
+Create a new file `config/application.yml`. Copy and paste the DATABASE_URL and LAUNCHPAD_LICENSE_KEY lines from terminal into config/application.yml (e.g. `LAUNCHPAD_LICENSE_KEY: lkjsdf198e3kua99sdlkfjkj`)
+
+```term
+$ bundle exec rake db:migrate db:schema:dump
+```
+
+```term
+$ bundle exec rake install_launchpad
+```
+
+In `app/actions/collect_action.rb`, change `authorized?` to return `true`. This is just while we test to make sure the API is working. We'll need to change this back to `false` afterwards.
+
+For each table you'd like to expose API endpoints, add the following line to routes.rb within the block `scope :v1 do`: `create_sweet_actions(:accounts)` (replace :accounts with the pluralized table name). This generates CRUD routes for each resource (show, collect, create, update, destroy). Your routes file should look something like below:
+
+```ruby
 Rails.application.routes.draw do
   scope :api do
     scope :v1 do
@@ -49,6 +92,27 @@ Rails.application.routes.draw do
 end
 ```
 
-## 4. Run API
-1. In terminal: `rails s`
-2. Visit one of your REST tables like so `localhost:3000/api/v1/accounts.json`
+### 4. Run the API
+
+```term
+$ rails s
+```
+
+Visit one of your REST tables like so `localhost:3000/api/v1/accounts.json`
+
+
+## Removing the add-on
+
+You can remove launchpad via the CLI:
+
+> warning
+> This will destroy all associated data and cannot be undone!
+
+```term
+$ heroku addons:destroy launchpad:test
+```
+
+## Support
+
+All launchpad support and runtime issues should be submitted via one of the [Heroku Support channels](support-channels).
+
