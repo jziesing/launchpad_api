@@ -1,6 +1,6 @@
 Figaro.require_keys(
   %w(
-    APPLICATION_ROOT_URL
-    SENTRY_URL
+    DATABASE_URL
+    LAUNCHPAD_LICENSE_KEY
   )
 )
