@@ -20,7 +20,7 @@ Since the add-on provides a full web application framework, we actually start by
 1. [Deploy API to Heroku](#1-deploy-to-heroku)
 2. [Configure Heroku Connect](#2-configure-heroku-connect)
 3. [Setup API locally](#3-setup-api-locally)
-4. [Done! Run the API](#4-view-api)
+4. [Done! Run the API](#4-run-the-api)
 
 ### 1. Deploy to Heroku
 <a href="https://heroku.com/deploy?template=https://github.com/launchpadlab/launchpad_api" target="_blank">
