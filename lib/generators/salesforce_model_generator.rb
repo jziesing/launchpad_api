@@ -1,10 +1,11 @@
 class SalesforceModelGenerator < Rails::Generators::Base
   argument :model, type: :string
+  argument :table, type: :string
 
   def create_model_file
-    create_file "app/models/#{model.singularize}.rb", <<-FILE
+    create_file "app/models/#{model.singularize.underscore}.rb", <<-FILE
 class #{model.singularize.classify} < SalesforceModel
-  self.table_name = 'salesforce.#{model.singularize}'
+  self.table_name = 'salesforce.#{table.singularize}'
 end
     FILE
   end

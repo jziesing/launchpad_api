@@ -9,7 +9,8 @@ class DiscoverModels
     all_tables.reject do |table|
       next true if table.name[0] == '_'
       next true if table.name == 'versions'      
-      klass_defined?(table.name.classify)
+      model_name = table.name.remove('__c').classify
+      klass_defined?(model_name)
     end
   end
  
