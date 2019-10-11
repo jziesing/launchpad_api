@@ -3,9 +3,9 @@ class DestroyAction < SweetActions::JSON::DestroyAction
   #   resource_class.find(params[:id])
   # end
 
-  # def authorized?
-  #   can?(:destroy, resource)
-  # end
+  def authorized?
+    controller.can(:destroy, resource)
+  end
 
   # def destroy
   #   resource.destroy

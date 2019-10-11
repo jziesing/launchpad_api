@@ -3,9 +3,9 @@ class UpdateAction < SweetActions::JSON::UpdateAction
   #   resource_class.find(params[:id])
   # end
 
-  # def authorized?
-  #   can?(:update, resource)
-  # end
+  def authorized?
+    controller.can(:update, resource)
+  end
 
   # def save
   #   resource.attributes = resource_params

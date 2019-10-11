@@ -1,7 +1,9 @@
 ## Overview
-The [LaunchPad Accelerator](https://elements.heroku.com/addons/launchpad) is an add-on that allows developers to build and deploy Salesforce-integrated web and mobile applications 4x faster
+[LaunchPad](https://elements.heroku.com/addons/launchpad) is an add-on that allows developers to build and deploy Salesforce-integrated web and mobile applications 2x faster.
 
-After only a few minutes following the below setup guide, you'll have a REST API for the Salesforce tables you'd like integrated with your web or mobile application.
+After only a few minutes following the below setup guide, you'll have a REST API for the Salesforce objects you'd like integrated with your web or mobile application.
+
+The LaunchPad Add-On itself simply provides a license to use the LaunchPad framework. Without the add-on, the installation process will not succeed.
 
 **Key Features:**
 
@@ -18,16 +20,16 @@ After only a few minutes following the below setup guide, you'll have a REST API
 Since the add-on provides a full web application framework, we actually start by deploying an app to Heroku and then later provision the add-on on that app. The LaunchPad Accelerator add-on must be used in conjuction with the app deployed from the deploy button below.
 
 1. [Deploy API to Heroku](#1-deploy-to-heroku)
-2. [Configure Heroku Connect](#2-configure-heroku-connect)
+2. [Configure Heroku Connect](#2-configure-heroku-connect-optional) (Optional)
 3. [Setup API locally](#3-setup-api-locally)
-4. [Done! Run the API](#4-run-the-api)
+4. [Deploy the API](#4-deploy-the-api)
 
 ### 1. Deploy to Heroku
 <a href="https://heroku.com/deploy?template=https://github.com/launchpadlab/launchpad_api" target="_blank">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
 
-### 2. Configure Heroku Connect
+### 2. Configure Heroku Connect (Optional)
 1. Click "Manage App" to go to your app's Heroku dashboard
 2. Click "Resources" then "Heroku Connect"
 3. Click "Setup Connection" then "Next"
@@ -43,13 +45,7 @@ Download [this repository](https://github.com/launchpadlab/launchpad_api) as a z
 
 ```term
 $ cd ~/path/to/launchpad_api
-```
-
-```term
 $ git init
-```
-
-```term
 $ bundle install
 ```
 
@@ -57,27 +53,28 @@ In the below command, replace `APPNAME` with the name of the Heroku app you just
 
 ```term
 $ heroku git:remote -a APPNAME
-```
-
-```term
 $ heroku addons:create launchpad:test
 ```
 
+After you provision Launchpad, the following config variables will be available in your app's configuration: 
+
+* `LAUNCHPAD_LICENSE_KEY`
+
+You can confirm this via the `heroku config` command:
+
 ```term
 $ heroku config
+=== example Config Vars
+LAUNCHPAD_LICENSE_KEY: abcdefghijklmnop
+
 ```
 
 Create a new file `config/application.yml`. Copy and paste the DATABASE_URL and LAUNCHPAD_LICENSE_KEY lines from terminal into config/application.yml (e.g. `LAUNCHPAD_LICENSE_KEY: lkjsdf198e3kua99sdlkfjkj`)
 
 ```term
 $ bundle exec rake db:migrate db:schema:dump
+$ bundle exec rake launchpad:install
 ```
-
-```term
-$ bundle exec rake install_launchpad
-```
-
-In `app/actions/collect_action.rb`, change `authorized?` to return `true`. This is just while we test to make sure the API is working. We'll need to change this back to `false` afterwards.
 
 For each table you'd like to expose API endpoints, add the following line to routes.rb within the block `scope :v1 do`: `create_sweet_actions(:accounts)` (replace :accounts with the pluralized table name). This generates CRUD routes for each resource (show, collect, create, update, destroy). Your routes file should look something like below:
 
@@ -92,14 +89,26 @@ Rails.application.routes.draw do
 end
 ```
 
-### 4. Run the API
+### 4. Deploy the API
 
 ```term
-$ rails s
+git add -A
+commit -m "first commit"
+git push heroku master
 ```
 
-Visit one of your REST tables like so `localhost:3000/api/v1/accounts.json`
+Visit one of your resources (replace `accounts` with your resource):
 
+```term
+heroku open /api/v1/accounts.json
+```
+
+Enter the following credentials:
+
+```
+username: launchpad
+password: <your LaunchPad License Key>
+```
 
 ## Removing the add-on
 
@@ -115,4 +124,3 @@ $ heroku addons:destroy launchpad:test
 ## Support
 
 All launchpad support and runtime issues should be submitted via one of the [Heroku Support channels](support-channels).
-

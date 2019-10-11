@@ -3,7 +3,7 @@ class ShowAction < SweetActions::JSON::ShowAction
   #   resource_class.find(params[:id])
   # end
 
-  # def authorized?
-  #   can?(:read, resource)
-  # end
+  def authorized?
+    controller.can(:read, resource)
+  end
 end

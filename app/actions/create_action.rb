@@ -3,9 +3,9 @@ class CreateAction < SweetActions::JSON::CreateAction
   #   resource_class.new(resource_params)
   # end
 
-  # def authorized?
-  #   can?(:create, resource)
-  # end
+  def authorized?
+    controller.can(:create, resource)
+  end
 
   # def save
   #   resource.save

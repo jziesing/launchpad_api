@@ -4,6 +4,6 @@ class CollectAction < SweetActions::JSON::CollectAction
   end
 
   def authorized?
-    false
+    controller.can(:read, resource)
   end
 end
