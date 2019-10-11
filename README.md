@@ -41,11 +41,12 @@ Since the add-on provides a full web application framework, we actually start by
 9. Click "Save"
 
 ### 3. Setup API Locally
+
 Download [this repository](https://github.com/launchpadlab/launchpad_api) as a zip file and extract it into a preferred folder on your machine.
 
 ```term
-$ cd ~/path/to/launchpad_api
-$ git init
+$ git clone git@github.com:LaunchPadLab/launchpad_api.git
+$ cd launchpad_api
 $ bundle install
 ```
 
