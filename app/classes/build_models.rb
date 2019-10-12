@@ -26,7 +26,7 @@ class BuildModels
       system("rails g api_controller #{model_name}")
       system("rails g api_docs #{model_name}")
     end
-    system("rails g routes #{model_names}")
+    system("rails g routes #{model_names.join(' ')}")
     system('rake docs:generate')
   end
 end
