@@ -17,7 +17,7 @@ resource '#{model_name.pluralize}' do
     example 'Collection of #{model_name.pluralize}' do
       do_request
 
-      expect(status).to eq 200
+      expect(response_status).to eq 200
     end
   end
 
@@ -26,7 +26,7 @@ resource '#{model_name.pluralize}' do
     example 'Find an Individual #{model_name}' do
       do_request
 
-      expect(status).to eq 200
+      expect(response_status).to eq 200
     end
   end
 
@@ -53,7 +53,7 @@ resource '#{model_name.pluralize}' do
           #{individual_name}: #{individual_name}_params,
         }       
         do_request(request)
-        expect(status).to eq 200
+        expect(response_status).to eq 200
       end
     end
   end  

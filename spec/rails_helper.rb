@@ -70,4 +70,5 @@ end
 RspecApiDocumentation.configure do |config|
   config.format = :json
   config.request_body_formatter = :json
+  config.disable_dsl_status!
 end
