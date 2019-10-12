@@ -5,10 +5,11 @@ class BuildModels
 
   def call
     tables = DiscoverModels.new.new_tables
-    
+    model_names = []
     tables.each do |table|
       columns = table.attributes.map { |attr| "#{attr.name}:#{attr.type}" }
       model_name = table.name.remove('__c').classify
+      model_names << model_name
       columns_string = columns.join(' ')
 
       script = table.to_script('model', false)
@@ -25,6 +26,7 @@ class BuildModels
       system("rails g api_controller #{model_name}")
       system("rails g api_docs #{model_name}")
     end
+    system("rails g routes #{model_names}")
     system('rake docs:generate')
   end
 end

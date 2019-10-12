@@ -22,6 +22,7 @@ resource '#{model_name.pluralize}' do
   end
 
   get '/api/#{collection_name}/:id' do
+    let(:id) { 1 }
     example 'Find an Individual #{model_name}' do
       do_request
 
