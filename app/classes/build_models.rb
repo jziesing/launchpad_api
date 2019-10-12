@@ -7,7 +7,7 @@ class BuildModels
     tables = DiscoverModels.new.new_tables
     
     tables.each do |table|
-      columns = table.attributes.map { |attr| "#{attr.name}:#{attr.type} }
+      columns = table.attributes.map { |attr| "#{attr.name}:#{attr.type}" }
       model_name = table.name.remove('__c').classify
       columns_string = columns.join(' ')
 
