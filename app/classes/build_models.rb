@@ -7,7 +7,7 @@ class BuildModels
     tables = DiscoverModels.new.new_tables
     
     tables.each do |table|
-      columns = table.attributes.map { |attr| attr.name }
+      columns = table.attributes.map { |attr| "#{attr.name}:#{attr.type} }
       model_name = table.name.remove('__c').classify
       columns_string = columns.join(' ')
 
@@ -23,6 +23,7 @@ class BuildModels
       system("rails generate decanter #{model_name} #{columns_string}")
       system("rails generate serializer #{model_name} #{columns_string}")
       system("rails g api_controller #{model_name}")
+      system("rails g api_docs #{model_name}")
     end
   end
 end

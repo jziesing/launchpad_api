@@ -54,6 +54,7 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    api-pagination (4.8.2)
     apitome (0.3.0)
       kramdown
       railties
@@ -101,6 +102,18 @@ GEM
     jaro_winkler (1.5.3)
     jsonapi-renderer (0.2.2)
     jwt (2.2.1)
+    kaminari (1.1.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.1.1)
+      kaminari-activerecord (= 1.1.1)
+      kaminari-core (= 1.1.1)
+    kaminari-actionview (1.1.1)
+      actionview
+      kaminari-core (= 1.1.1)
+    kaminari-activerecord (1.1.1)
+      activerecord
+      kaminari-core (= 1.1.1)
+    kaminari-core (1.1.1)
     kramdown (2.1.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -243,6 +256,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10)
+  api-pagination
   apitome
   bcrypt (~> 3.0)
   bootsnap (>= 1.1.0)
@@ -255,6 +269,7 @@ DEPENDENCIES
   faker (~> 1.0)
   figaro (~> 1.0)
   httparty
+  kaminari
   listen (>= 3.0.5, < 3.2)
   lp_token_auth (~> 0.3)
   paper_trail (~> 10.0)

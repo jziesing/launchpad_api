@@ -23,6 +23,8 @@ gem 'httparty'
 gem 'cancancan'
 gem 'rspec_api_documentation'
 gem 'apitome'
+gem 'kaminari'
+gem 'api-pagination'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'

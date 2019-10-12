@@ -5,7 +5,7 @@ class ApiControllerGenerator < Rails::Generators::Base
     create_file "app/controllers/api/#{collection_name}_controller.rb", <<-FILE
 class Api::#{model_name.pluralize}Controller < ApplicationController
   def index
-    @#{collection_name} = #{model_name}.all.limit(50)
+    @#{collection_name} = paginate #{model_name}.all
     authorize!(:read, @#{collection_name})
     json_with @#{collection_name}    
   end
