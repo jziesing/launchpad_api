@@ -19,7 +19,6 @@ gem 'active_model_serializers', '~> 0.10'
 gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'schema_to_scaffold'
-gem 'sweet_actions'
 gem 'httparty'
 gem 'cancancan'
 

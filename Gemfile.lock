@@ -214,8 +214,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sweet_actions (0.3.0)
-      activesupport
     thor (0.20.3)
     thread_safe (0.3.6)
     token_master (1.1.0)
@@ -258,7 +256,6 @@ DEPENDENCIES
   schema_to_scaffold
   sentry-raven (~> 2.0)
   shoulda-matchers (~> 3.1)
-  sweet_actions
   token_master (~> 1.0)
   tzinfo-data
 

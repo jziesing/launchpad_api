@@ -20,9 +20,10 @@ class BuildModels
       
       system("rails generate salesforce_model #{model_name} #{table.name}")
       system(final_script)
+      binding.pry
       system("rails generate decanter #{model_name} #{columns_string}")
       system("rails generate serializer #{model_name} #{columns_string}")
-      system("rails g actions #{model_name.pluralize}")   
+      system("rails g api_controller #{model_name}")
     end
   end
 end
