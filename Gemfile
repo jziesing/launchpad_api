@@ -21,6 +21,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'schema_to_scaffold'
 gem 'httparty'
 gem 'cancancan'
+gem 'rspec_api_documentation'
+gem 'apitome'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
