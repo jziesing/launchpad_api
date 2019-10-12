@@ -77,19 +77,6 @@ $ bundle exec rake db:migrate db:schema:dump
 $ bundle exec rake launchpad:install
 ```
 
-For each table you'd like to expose API endpoints, add the following line to routes.rb within the block `scope :v1 do`: `create_sweet_actions(:accounts)` (replace :accounts with the pluralized table name). This generates CRUD routes for each resource (show, collect, create, update, destroy). Your routes file should look something like below:
-
-```ruby
-Rails.application.routes.draw do
-  scope :api do
-    scope :v1 do
-      create_sweet_actions(:accounts)
-      create_sweet_actions(:opportunities)
-    end
-  end
-end
-```
-
 ### 4. Deploy the API
 
 ```term
