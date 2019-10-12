@@ -25,5 +25,6 @@ class BuildModels
       system("rails g api_controller #{model_name}")
       system("rails g api_docs #{model_name}")
     end
+    system('rake docs:generate')
   end
 end

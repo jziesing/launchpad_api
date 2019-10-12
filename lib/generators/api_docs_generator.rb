@@ -21,7 +21,7 @@ resource '#{model_name.pluralize}' do
     end
   end
 
-  get '/api/#{collection_name}/accounts/1' do
+  get '/api/#{collection_name}/:id' do
     example 'Find an Individual #{model_name}' do
       do_request
 
@@ -36,7 +36,7 @@ resource '#{model_name.pluralize}' do
       key, value = #{model_name}.first.attributes.detect do |key, value|
         value.is_a?(String) && permitted_params.include?(key.to_sym)
       end
-      { key => "#{value} (updated)" }
+      { key => "\#{value} (updated)" }
     end
     
     with_options scope: :#{individual_name} do
@@ -55,61 +55,6 @@ resource '#{model_name.pluralize}' do
         expect(status).to eq 200
       end
     end
-  end  
-end
-
-  def index
-    @#{collection_name} = paginate #{model_name}.all
-    authorize!(:read, @#{collection_name})
-    json_with @#{collection_name}    
-  end
-
-  def show
-    @#{individual_name} = #{model_name}.find(params[:id])
-    authorize!(:read, @#{individual_name})
-    json_with @#{individual_name}
-  end
-
-  def create
-    @#{individual_name} = #{model_name}.new(#{individual_name}_params)
-    authorize!(:create, @#{individual_name})
-    @#{individual_name}.save ? create_success : create_failure
-  end
-
-  def update
-    @#{individual_name} = #{model_name}.find(params[:id])
-    authorize!(:update, @#{individual_name})
-    @#{individual_name}.attributes = #{individual_name}_params
-    @#{individual_name}.save ? update_success : update_failure
-  end
-
-  def destroy
-    @#{individual_name} = #{model_name}.find(params[:id])
-    authorize!(:destroy, @#{individual_name})
-    @#{individual_name}.destroy
-    json_with @#{individual_name}
-  end
-
-  private
-
-  def #{individual_name}_params
-    #{model_name}Decanter.decant(params[:#{individual_name}])
-  end
-
-  def create_success
-    json_with @#{individual_name}
-  end
-
-  def create_failure
-    json_with @#{individual_name}
-  end
-
-  def update_success
-    json_with @#{individual_name}
-  end
-
-  def update_failure
-    json_with @#{individual_name}
   end  
 end
     FILE
