@@ -1,7 +1,12 @@
 class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Basic::ControllerMethods
+  include RailsUtil::JsonHelper
   
   before_action :authenticate
+
+  def current_user
+    # TODO: customized for each app
+  end
 
   private
 
