@@ -2,6 +2,7 @@
   "name": "LaunchPad Accelerator API",
   "description": "Ruby on Rails API",
   "scripts": {    
+    "postdeploy": "bundle exec rake generate_api"
   },
   "env": {
   },
