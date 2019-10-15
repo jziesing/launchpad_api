@@ -6,10 +6,7 @@
   "env": {
   },
   "repository": "https://github.com/LaunchPadLab/launchpad_api",
-  "addons": [
-    "heroku-postgresql",
-    "herokuconnect:demo"
-  ],
+  "addons": [],
   "buildpacks": [
     {
       "url": "heroku/ruby"
