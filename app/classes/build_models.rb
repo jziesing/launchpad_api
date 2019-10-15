@@ -5,6 +5,7 @@ class BuildModels
 
   def call
     tables = DiscoverModels.new.new_tables
+    return unless tables.any?
     model_names = []
     tables.each do |table|
       columns = table.attributes.map { |attr| "#{attr.name}:#{attr.type}" }
