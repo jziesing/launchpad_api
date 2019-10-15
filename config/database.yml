@@ -11,3 +11,10 @@ test:
   database: launchpad_api_test
   pool: 5
   host: localhost
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  port: 5432
+  pool: 5
+  schema_search_path: 'public,salesforce'
