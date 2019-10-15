@@ -83,12 +83,7 @@ $ bundle exec rake launchpad:install
 git add -A
 commit -m "first commit"
 git push heroku master
-```
-
-Visit one of your resources (replace `accounts` with your resource):
-
-```term
-heroku open /api/v1/accounts.json
+heroku open /api/docs
 ```
 
 Enter the following credentials:
