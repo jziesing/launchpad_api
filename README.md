@@ -1,25 +1,20 @@
 ## Overview
-[LaunchPad](https://elements.heroku.com/addons/launchpad) is an add-on that allows developers to build and deploy Salesforce-integrated web and mobile applications 2x faster.
+The [LaunchPad](https://elements.heroku.com/addons/launchpad) add-on allows developers to generate a Ruby on Rails REST API based on a Postgres database. The add-on is typically used in conjunction with Heroku Connect, which means that a Salesforce customer can generate a REST API based on their existing Salesforce schema, greatly accelerating the process of building a Salesforce-integrated web or mobile solution.
 
-After only a few minutes following the below setup guide, you'll have a REST API for the Salesforce objects you'd like integrated with your web or mobile application.
-
-The LaunchPad Add-On itself simply provides a license to use the LaunchPad framework. Without the add-on, the installation process will not succeed.
+Unlike traditional add-ons, this add-on is only useful when attached to the [LaunchPad API](github.com/launchpadlab/launchpad_api) application that is generated from our [Deploy to Heroku](#1-deploy-to-heroku) button. The add-on itself simply provides a license key. Without a license key, the installation process will not succeed.
 
 **Key Features:**
-
-- REST API
-- [ORM](https://guides.rubyonrails.org/active_record_basics.html)
-- Postgres Database
-- Salesforce Integration
+- [Ruby on Rails](https://rubyonrails.org/) REST API
+- [ActiveRecord](https://guides.rubyonrails.org/active_record_basics.html) ORM
+- [Postgres](https://www.postgresql.org/) Database
+- [Salesforce](https://salesforce.com) Integration
 - [Strong Security](https://guides.rubyonrails.org/security.html)
 - [Authorization](https://github.com/CanCanCommunity/cancancan)
-- [Authentication](https://github.com/LaunchPadLab/lp_token_auth)
+- [Authentication](https://tools.ietf.org/html/rfc7617)
+- [API Documentation Generation](https://github.com/zipmark/rspec_api_documentation)
 
 ## Provisioning the add-on
-
-Since the add-on provides a full web application framework, we actually start by deploying an app to Heroku and then later provision the add-on on that app. The LaunchPad Accelerator add-on must be used in conjuction with the app deployed from the deploy button below.
-
-1. [Deploy API to Heroku](#1-deploy-to-heroku)
+1. [Deploy LaunchPad API to Heroku](#1-deploy-to-heroku)
 2. [Configure Heroku Connect](#2-configure-heroku-connect-optional) (Optional)
 3. [Setup API locally](#3-setup-api-locally)
 4. [Deploy the API](#4-deploy-the-api)
@@ -41,8 +36,7 @@ Since the add-on provides a full web application framework, we actually start by
 9. Click "Save"
 
 ### 3. Setup API Locally
-
-Download [this repository](https://github.com/launchpadlab/launchpad_api) as a zip file and extract it into a preferred folder on your machine.
+Clone the [LaunchPad API](https://github.com/launchpadlab/launchpad_api) to your machine:
 
 ```term
 $ git clone git@github.com:LaunchPadLab/launchpad_api.git
@@ -70,10 +64,15 @@ LAUNCHPAD_LICENSE_KEY: abcdefghijklmnop
 
 ```
 
-Create a new file `config/application.yml`. Copy and paste the DATABASE_URL and LAUNCHPAD_LICENSE_KEY lines from terminal into config/application.yml (e.g. `LAUNCHPAD_LICENSE_KEY: lkjsdf198e3kua99sdlkfjkj`)
+Create a new file `config/application.yml`. Copy and paste the DATABASE_URL and LAUNCHPAD_LICENSE_KEY lines from terminal into config/application.yml. For example:
+
+```yml
+# config/application.yml
+DATABASE_URL: postgres://...
+LAUNCHPAD_LICENSE_KEY: abcdefghijklmnop
+```
 
 ```term
-$ bundle exec rake db:migrate db:schema:dump
 $ bundle exec rake launchpad:install
 ```
 
