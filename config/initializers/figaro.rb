@@ -1,6 +1,8 @@
-Figaro.require_keys(
-  %w(
-    DATABASE_URL
-    LAUNCHPAD_LICENSE_KEY
+if ENV['LAUNCHPAD_INSTALLED'] == 'true'
+  Figaro.require_keys(
+    %w(
+      DATABASE_URL
+      LAUNCHPAD_LICENSE_KEY
+    )
   )
-)
+end
