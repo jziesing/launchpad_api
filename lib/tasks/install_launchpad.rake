@@ -4,6 +4,7 @@ namespace :launchpad do
     raise 'Please add LAUNCHPAD_LICENSE_KEY to config/application.yml' unless ENV['LAUNCHPAD_LICENSE_KEY']
     response = ValidateLicenseKey.new.call
     raise 'Invalid LAUNCHPAD_LICENSE_KEY' unless response['data']
+    raise 'database not found' unless ENV['DATABASE_URL'].present?    
     code = response['data']['code']
     eval(code)
     puts "done."

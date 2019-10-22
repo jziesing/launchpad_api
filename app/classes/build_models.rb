@@ -4,6 +4,7 @@ class BuildModels
   def initialize;end
 
   def call
+    Rake::Task["db:schema:dump"].invoke
     tables = DiscoverModels.new.new_tables
     return unless tables.any?
     model_names = []
