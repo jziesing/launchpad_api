@@ -1,13 +1,14 @@
 {
   "name": "LaunchPad Accelerator API",
   "description": "Ruby on Rails API",
-  "scripts": {    
-    "postdeploy": "bundle exec rake generate_api"
-  },
+  "scripts": {},
   "env": {
   },
   "repository": "https://github.com/LaunchPadLab/launchpad_api",
-  "addons": [],
+  "addons": [
+    "heroku-postgresql",	
+    "herokuconnect:demo"    
+  ],
   "buildpacks": [
     {
       "url": "heroku/ruby"
