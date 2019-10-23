@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApiHelpers
   def attribute_to_use(model_class, permitted_params)
     model_class.columns.detect do |column|
@@ -7,7 +9,7 @@ module ApiHelpers
 
   def put_params(model_class, permitted_params)
     column = attribute_to_use(model_class, permitted_params)
-    value = [model_class.first.try(:send, column.name), 'New Value'].join(' - ')
+    value = [model_class.first.try(:send, column.name), "New Value"].join(" - ")
     { column.name => value }
   end
 

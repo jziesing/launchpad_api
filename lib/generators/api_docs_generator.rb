@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApiDocsGenerator < Rails::Generators::Base
   argument :model, type: :string
 

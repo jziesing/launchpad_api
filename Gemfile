@@ -5,30 +5,30 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.5.1"
 
-gem 'rails', '5.2.3'
-gem 'token_master', '~> 1.0'
-gem 'sentry-raven', '~> 2.0'
-gem 'rubocop'
-gem 'rubocop-performance'
-gem 'rubocop-rails'
-gem 'rails_util', github: 'launchpadlab/rails_util'
-gem 'rack-cors', '~> 1.0'
-gem 'pg', '~> 0.18'
-gem 'paper_trail', '~> 10.0'
-gem 'lp_token_auth', '~> 0.3'
-gem 'figaro', '~> 1.0'
-gem 'decanter', '~> 1.0'
-gem 'bcrypt', '~> 3.0'
-gem 'active_model_serializers', '~> 0.10'
-gem 'puma', '~> 3.11'
-gem 'bootsnap', '>= 1.1.0', require: false
-gem 'schema_to_scaffold'
-gem 'httparty'
-gem 'cancancan'
-gem 'rspec_api_documentation'
-gem 'apitome'
-gem 'kaminari'
-gem 'api-pagination'
+gem "rails", "5.2.3"
+gem "token_master", "~> 1.0"
+gem "sentry-raven", "~> 2.0"
+gem "rubocop"
+gem "rubocop-performance"
+gem "rubocop-rails"
+gem "rails_util", github: "launchpadlab/rails_util"
+gem "rack-cors", "~> 1.0"
+gem "pg", "~> 0.18"
+gem "paper_trail", "~> 10.0"
+gem "lp_token_auth", "~> 0.3"
+gem "figaro", "~> 1.0"
+gem "decanter", "~> 1.0"
+gem "bcrypt", "~> 3.0"
+gem "active_model_serializers", "~> 0.10"
+gem "puma", "~> 3.11"
+gem "bootsnap", ">= 1.1.0", require: false
+gem "schema_to_scaffold"
+gem "httparty"
+gem "cancancan"
+gem "rspec_api_documentation"
+gem "apitome"
+gem "kaminari"
+gem "api-pagination"
 
 group :development, :test do
   gem "rspec-rails", "~> 3.0"

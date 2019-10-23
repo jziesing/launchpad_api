@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RoutesGenerator < Rails::Generators::Base
   argument :models, type: :array
 
