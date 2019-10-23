@@ -1,7 +1,9 @@
-require 'rails/generators'
+# frozen_string_literal: true
+
+require "rails/generators"
 
 class BuildModels
-  def initialize;end
+  def initialize; end
 
   def call
     Rake::Task["db:schema:dump"].invoke
@@ -10,16 +12,16 @@ class BuildModels
     model_names = []
     tables.each do |table|
       columns = table.attributes.map { |attr| "#{attr.name}:#{attr.type}" }
-      model_name = table.name.remove('__c').classify
+      model_name = table.name.remove("__c").classify
       model_names << model_name
-      columns_string = columns.join(' ')
+      columns_string = columns.join(" ")
 
-      script = table.to_script('model', false)
+      script = table.to_script("model", false)
       script.pop
-      script << ' --skip'
-      script = script.join.split(' ')
+      script << " --skip"
+      script = script.join.split(" ")
       script[3] = model_name
-      final_script = script.join(' ')
+      final_script = script.join(" ")
       
       system("rails generate salesforce_model #{model_name} #{table.name}")
       system(final_script)
