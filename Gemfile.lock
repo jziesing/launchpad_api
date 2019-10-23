@@ -225,6 +225,11 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
+    rubocop-performance (1.5.0)
+      rubocop (>= 0.71.0)
+    rubocop-rails (2.3.2)
+      rack (>= 1.1)
+      rubocop (>= 0.72.0)
     ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
     schema_to_scaffold (0.8.0)
@@ -283,6 +288,8 @@ DEPENDENCIES
   rspec-rails (~> 3.0)
   rspec_api_documentation
   rubocop
+  rubocop-performance
+  rubocop-rails
   schema_to_scaffold
   sentry-raven (~> 2.0)
   shoulda-matchers (~> 3.1)
