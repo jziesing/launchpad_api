@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateAction < SweetActions::JSON::CreateAction
   # def set_resource
   #   resource_class.new(resource_params)

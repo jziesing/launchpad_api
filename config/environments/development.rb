@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*'
-        resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
+        origins "*"
+        resource "*", headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
       end
     end
     
@@ -11,7 +13,7 @@ Rails.application.configure do
       Bullet.alert = true
       Bullet.rails_logger = true
     end
-      # Settings specified here will take precedence over those in config/application.rb.
+  # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -26,12 +28,12 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
-  if Rails.root.join('tmp', 'caching-dev.txt').exist?
+  if Rails.root.join("tmp", "caching-dev.txt").exist?
     config.action_controller.perform_caching = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+      "Cache-Control" => "public, max-age=#{2.days.to_i}"
     }
   else
     config.action_controller.perform_caching = false
