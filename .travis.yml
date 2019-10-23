@@ -12,7 +12,7 @@ addons:
 before_script:
   - bundle exec rubocop --config .rubocop.yml
   - psql -c 'create database travis_ci_test;' -U postgres
-  - bundle exec rake db:migrate
+  - bundle exec rake db:create db:migrate
 
 script:
   - bundle exec rspec
