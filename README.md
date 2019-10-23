@@ -49,30 +49,7 @@ In the below command, replace `APPNAME` with the name of the Heroku app you just
 ```term
 $ heroku git:remote -a APPNAME
 $ heroku addons:create launchpad:test
-```
-
-After you provision Launchpad, the following config variables will be available in your app's configuration: 
-
-* `LAUNCHPAD_LICENSE_KEY`
-
-You can confirm this via the `heroku config` command:
-
-```term
-$ heroku config
-=== example Config Vars
-LAUNCHPAD_LICENSE_KEY: abcdefghijklmnop
-
-```
-
-Create a new file `config/application.yml`. Copy and paste the DATABASE_URL and LAUNCHPAD_LICENSE_KEY lines from terminal into config/application.yml. For example:
-
-```yml
-# config/application.yml
-DATABASE_URL: postgres://...
-LAUNCHPAD_LICENSE_KEY: abcdefghijklmnop
-```
-
-```term
+$ bundle exec rake launchpad:pull
 $ bundle exec rake launchpad:install
 ```
 
