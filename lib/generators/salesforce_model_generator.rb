@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SalesforceModelGenerator < Rails::Generators::Base
   argument :model, type: :string
   argument :table, type: :string

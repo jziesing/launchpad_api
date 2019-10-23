@@ -1,22 +1,24 @@
-require 'rails/generators'
+# frozen_string_literal: true
+
+require "rails/generators"
 
 class BuildModels
-  def initialize;end
+  def initialize; end
 
   def call
     tables = DiscoverModels.new.new_tables
     
     tables.each do |table|
       columns = table.attributes.map { |attr| attr.name }
-      model_name = table.name.remove('__c').classify
-      columns_string = columns.join(' ')
+      model_name = table.name.remove("__c").classify
+      columns_string = columns.join(" ")
 
-      script = table.to_script('model', false)
+      script = table.to_script("model", false)
       script.pop
-      script << ' --skip'
-      script = script.join.split(' ')
+      script << " --skip"
+      script = script.join.split(" ")
       script[3] = model_name
-      final_script = script.join(' ')
+      final_script = script.join(" ")
       
       system("rails generate salesforce_model #{model_name} #{table.name}")
       system(final_script)

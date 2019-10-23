@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DestroyAction < SweetActions::JSON::DestroyAction
   # def set_resource
   #   resource_class.find(params[:id])

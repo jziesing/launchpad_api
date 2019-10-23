@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ShowAction < SweetActions::JSON::ShowAction
   # def set_resource
   #   resource_class.find(params[:id])
