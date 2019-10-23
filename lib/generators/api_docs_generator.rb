@@ -8,13 +8,15 @@ require 'rspec_api_documentation/dsl'
 
 resource '#{model_name.pluralize}' do
   let(:token) { Base64.strict_encode64("launchpad:\#{ENV['LAUNCHPAD_LICENSE_KEY']}") }
+  permitted_params = #{model_name}Decanter.handlers.map(&:first).map(&:first)
     
   before do
     authentication :basic, "Basic \#{token}"
+    header 'Content-Type', 'application/json'
   end
 
   get '/api/#{collection_name}' do
-    example 'Collection of #{model_name.pluralize}' do
+    example 'Get #{model_name.pluralize}' do
       do_request
 
       expect(response_status).to eq 200
@@ -23,7 +25,7 @@ resource '#{model_name.pluralize}' do
 
   get '/api/#{collection_name}/:id' do
     let(:id) { 1 }
-    example 'Find an Individual #{model_name}' do
+    example 'Find #{model_name}' do
       do_request
 
       expect(response_status).to eq 200
@@ -31,28 +33,47 @@ resource '#{model_name.pluralize}' do
   end
 
   put '/api/#{collection_name}/:id' do
-    #{individual_name} = #{model_name}.first
-    permitted_params = #{model_name}Decanter.handlers.map(&:first).map(&:first)
-    let(:#{individual_name}_params) do
-      key, value = #{model_name}.first.attributes.detect do |key, value|
-        value.is_a?(String) && permitted_params.include?(key.to_sym)
-      end
-      { key => "\#{value} (updated)" }
-    end
-    
     with_options scope: :#{individual_name} do
       permitted_params.each do |attr|
-        parameter attr, example: #{individual_name}.send(attr)
+        parameter attr
       end
     end
     
-    context "200" do
+    context '200' do
       let(:id) { 1 }
-      example 'Update an Individual #{model_name}' do
+      example 'Update #{model_name}' do
         request = {
-          #{individual_name}: #{individual_name}_params,
+          #{individual_name}: put_params(#{model_name}, permitted_params),
         }       
         do_request(request)
+        expect(response_status).to eq 200
+      end
+    end
+  end  
+
+  post '/api/#{collection_name}' do
+    with_options scope: :#{individual_name} do
+      permitted_params.each do |attr|
+        parameter attr
+      end
+    end
+    
+    context '200' do
+      example 'Create #{model_name}' do
+        request = {
+          #{individual_name}: post_params(#{model_name}, permitted_params),
+        }       
+        do_request(request)
+        expect(response_status).to eq 200
+      end
+    end
+  end
+  
+  delete '/api/#{collection_name}/:id' do
+    context '200' do
+      let(:id) { 1 }
+      example 'Delete #{model_name}' do        
+        do_request
         expect(response_status).to eq 200
       end
     end
