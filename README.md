@@ -17,6 +17,8 @@ Unlike traditional add-ons, this add-on is only useful when attached to the [Lau
 - [Params Sanitization](https://github.com/launchpadlab/decanter)
 
 ## Provisioning the add-on
+Unlike other Heroku add-ons that can be attached to an existing Heroku app, our add-on must be attached to the [LaunchPad API](github.com/launchpadlab/launchpad_api). Because of this, the first step is to deploy the LaunchPad API application to Heroku using the Deploy to Heroku button found below.
+
 1. [Deploy LaunchPad API to Heroku](#1-deploy-to-heroku)
 2. [Configure Heroku Connect](#2-configure-heroku-connect-optional) (Optional)
 3. [Setup API locally](#3-setup-api-locally)
@@ -39,22 +41,20 @@ Unlike traditional add-ons, this add-on is only useful when attached to the [Lau
 9. Click "Save"
 
 ### 3. Setup API Locally
-Clone the [LaunchPad API](https://github.com/launchpadlab/launchpad_api) to your machine:
+In the below commands, replace `APPNAME` with the name of the Heroku app you just deployed:
 
 ```term
-$ git clone git@github.com:LaunchPadLab/launchpad_api.git
-$ cd launchpad_api
+$ git clone git@github.com:LaunchPadLab/launchpad_api.git launchpad-demo-1
+$ cd APPNAME
 $ bundle install
-```
-
-In the below command, replace `APPNAME` with the name of the Heroku app you just deployed:
-
-```term
 $ heroku git:remote -a APPNAME
 $ heroku addons:create launchpad:test
 $ bundle exec rake launchpad:pull
 $ bundle exec rake launchpad:install
+$ rails s
 ```
+
+Visit localhost:3000/api/docs in your browser to view the API documentation.
 
 ### 4. Deploy the API
 
@@ -69,7 +69,7 @@ Enter the following credentials:
 
 ```
 username: launchpad
-password: <your LaunchPad License Key>
+password: <your LaunchPad License Key found in config/application.yml>
 ```
 
 ## Removing the add-on
