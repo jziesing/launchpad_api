@@ -2,7 +2,7 @@
 
 namespace :launchpad do
   task pull: :environment do
-    puts 'pulling config vars from Heroku...'
+    puts "pulling config vars from Heroku..."
     system("heroku config > tmp/config_vars.txt")
     source_filepath = "#{Rails.root}/tmp/config_vars.txt"
     destination_filepath = "#{Rails.root}/config/application.yml"
@@ -12,7 +12,7 @@ namespace :launchpad do
       end
       out_file.puts "LAUNCHPAD_INSTALLED:      'true'"
     end
-    puts 'done.'
+    puts "done."
   end
 
   task install: :environment do
