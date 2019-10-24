@@ -2,15 +2,17 @@
 
 namespace :launchpad do
   task pull: :environment do
+    puts 'pulling config vars from Heroku...'
     system("heroku config > tmp/config_vars.txt")
-    source_filepath = "#{Rails.root}/tmp/config_vars.yml"
+    source_filepath = "#{Rails.root}/tmp/config_vars.txt"
     destination_filepath = "#{Rails.root}/config/application.yml"
     File.open(destination_filepath, "w") do |out_file|
       File.open(source_filepath).each.with_index do |line, line_number|
         out_file.puts line if line.include?("DATABASE_URL") || line.include?("LAUNCHPAD_LICENSE_KEY")
       end
-      out_file.puts "LAUNCHPAD_INSTALLED:      true"
+      out_file.puts "LAUNCHPAD_INSTALLED:      'true'"
     end
+    puts 'done.'
   end
 
   task install: :environment do

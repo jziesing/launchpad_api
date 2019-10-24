@@ -11,7 +11,7 @@ Unlike traditional add-ons, this add-on is only useful when attached to the [Lau
 - [Strong Security](https://guides.rubyonrails.org/security.html)
 - [Authorization](https://github.com/CanCanCommunity/cancancan)
 - [Authentication](https://tools.ietf.org/html/rfc7617)
-- [API Documentation Generation](https://github.com/zipmark/rspec_api_documentation)
+- [API Documentation](https://github.com/zipmark/rspec_api_documentation)
 - [Pagination](https://github.com/davidcelis/api-pagination)
 - [Serialization](https://github.com/rails-api/active_model_serializers)
 - [Params Sanitization](https://github.com/launchpadlab/decanter)
