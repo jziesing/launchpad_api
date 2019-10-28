@@ -6,11 +6,14 @@ class BuildModels
   def initialize; end
 
   def call
+    system("rake db:schema:dump")
     tables = DiscoverModels.new.new_tables
-    
+    return unless tables.any?
+    model_names = []
     tables.each do |table|
-      columns = table.attributes.map { |attr| attr.name }
+      columns = table.attributes.map { |attr| "#{attr.name}:#{attr.type}" }
       model_name = table.name.remove("__c").classify
+      model_names << model_name
       columns_string = columns.join(" ")
 
       script = table.to_script("model", false)
@@ -24,7 +27,10 @@ class BuildModels
       system(final_script)
       system("rails generate decanter #{model_name} #{columns_string}")
       system("rails generate serializer #{model_name} #{columns_string}")
-      system("rails g actions #{model_name.pluralize}")   
+      system("rails g api_controller #{model_name}")
+      system("rails g api_docs #{model_name}")
     end
+    system("rails g routes #{model_names.join(' ')}")
+    system("rake docs:generate")
   end
 end

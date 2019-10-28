@@ -11,3 +11,7 @@ test:
   database: launchpad_api_test
   pool: 5
   host: localhost
+
+production:
+  url: <%= ENV['DATABASE_URL'] %>
+  schema_search_path: 'public,salesforce'
