@@ -5,10 +5,9 @@ require "rails/generators"
 class BuildModels
   def initialize; end
 
-  def call
-    system("rake db:schema:dump")
+  def call    
     tables = DiscoverModels.new.new_tables
-    return unless tables.any?
+    raise 'No Database tables found - please make sure to create at least one Mapping in Heroku Connect' unless tables.any?
     model_names = []
     tables.each do |table|
       columns = table.attributes.map { |attr| "#{attr.name}:#{attr.type}" }

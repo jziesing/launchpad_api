@@ -1,5 +1,5 @@
 ## Overview
-The [LaunchPad](https://elements.heroku.com/addons/launchpad) add-on allows developers to generate a Ruby on Rails REST API based on a Postgres database. The add-on is typically used in conjunction with Heroku Connect, which means that a Salesforce customer can generate a REST API based on their existing Salesforce schema, greatly accelerating the process of building a Salesforce-integrated web or mobile solution.
+The [LaunchPad](https://elements.heroku.com/addons/launchpad) add-on allows Salesforce customers to build and launch web and mobile applications 2x faster. The add-on is used in conjunction with Heroku Connect, which means that a Salesforce customer can generate a REST API based on their existing Salesforce schema, greatly accelerating the process of building a Salesforce-integrated web or mobile solution.
 
 Unlike traditional add-ons, this add-on is only useful when attached to the [LaunchPad API](github.com/launchpadlab/launchpad_api) application that is generated from our [Deploy to Heroku](#1-deploy-to-heroku) button. The add-on itself simply provides a license key. Without a license key, the installation process will not succeed.
 
@@ -20,7 +20,7 @@ Unlike traditional add-ons, this add-on is only useful when attached to the [Lau
 Unlike other Heroku add-ons that can be attached to an existing Heroku app, our add-on must be attached to the [LaunchPad API](github.com/launchpadlab/launchpad_api). Because of this, the first step is to deploy the LaunchPad API application to Heroku using the Deploy to Heroku button found below.
 
 1. [Deploy LaunchPad API to Heroku](#1-deploy-to-heroku)
-2. [Configure Heroku Connect](#2-configure-heroku-connect-optional) (Optional)
+2. [Configure Heroku Connect](#2-configure-heroku-connect-optional)
 3. [Setup API locally](#3-setup-api-locally)
 4. [Deploy the API](#4-deploy-the-api)
 
@@ -29,7 +29,7 @@ Unlike other Heroku add-ons that can be attached to an existing Heroku app, our 
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
 
-### 2. Configure Heroku Connect (Optional)
+### 2. Configure Heroku Connect
 1. Click "Manage App" to go to your app's Heroku dashboard
 2. Click "Resources" then "Heroku Connect"
 3. Click "Setup Connection" then "Next"
@@ -44,7 +44,7 @@ Unlike other Heroku add-ons that can be attached to an existing Heroku app, our 
 In the below commands, replace `APPNAME` with the name of the Heroku app you just deployed:
 
 ```term
-$ git clone git@github.com:LaunchPadLab/launchpad_api.git launchpad-demo-1
+$ git clone git@github.com:LaunchPadLab/launchpad_api.git APPNAME
 $ cd APPNAME
 $ bundle install
 $ heroku git:remote -a APPNAME
