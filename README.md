@@ -1,7 +1,7 @@
 ## Overview
 The [LaunchPad](https://elements.heroku.com/addons/launchpad) add-on allows Salesforce customers to build and launch integrated web and mobile applications 2x faster. The add-on is used in conjunction with Heroku Connect, which means that a Salesforce customer can generate a REST API based on their existing Salesforce schema, greatly accelerating the process of building a Salesforce-integrated web or mobile solution.
 
-Unlike traditional add-ons, this add-on is only useful when attached to the [LaunchPad API](github.com/launchpadlab/launchpad_api) application that is generated from the [Deploy to Heroku](#1-deploy-to-heroku) button. The add-on itself simply provides a license key. Without a license key, the installation process will not succeed.
+Unlike traditional add-ons, this add-on is only useful when attached to the [LaunchPad API](github.com/launchpadlab/launchpad_api) application that is generated from the [Deploy to Heroku](#1-deploy-launchpad-api-to-heroku) button. The add-on itself simply provides a license key. Without a license key, the installation process will not succeed.
 
 **Key Features:**
 
