@@ -10,11 +10,11 @@ class BuildModels
   end
 
   def call    
-    tables = DiscoverModels.new.new_tables
-    count = tables.count
-    tables = tables[0..(num-1)]
+    available_tables = DiscoverModels.new.new_tables
+    count = available_tables.count
+    tables = available_tables[0..(num-1)]
     new_count = tables.count
-    puts "We did not generate #{count - new_count} available objects as your plan only allows for #{num} Mapping" if new_count > count
+    puts "Generating #{new_count} of #{count} available objects as your LaunchPad add-on plan only allows for #{num} Mapping" if new_count < count
     raise 'No Database tables found - please make sure to create at least one Mapping in Heroku Connect' unless tables.any?
     model_names = []
     tables.each do |table|
