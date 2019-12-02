@@ -22,9 +22,9 @@ namespace :launchpad do
     raise "Invalid LAUNCHPAD_LICENSE_KEY" unless response["data"]
     raise "database not found" unless ENV["DATABASE_URL"].present?
     Rake::Task["db:schema:dump"].invoke
-    Rails.env = 'test'
+    Rails.env = "test"
     Rake::Task["db:migrate"].invoke
-    Rails.env = 'development'
+    Rails.env = "development"
     code = response["data"]["code"]
     eval(code)
     puts "done."

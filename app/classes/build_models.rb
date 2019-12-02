@@ -36,36 +36,35 @@ class BuildModels
   end
 
   private
-
-  def tables
-    @tables ||= determine_tables
-  end
-
-  def raise_no_tables_error
-    raise 'No Database tables found - please make sure to create at least one Mapping in Heroku Connect'
-  end
-
-  def determine_tables
-    available_tables = DiscoverModels.new.new_tables
-    count = available_tables.count
-    raise_no_tables_error unless available_tables.any?
- 
-    prompt = TTY::Prompt.new
-    selected_tables = []
-    attempts = 0
-    while selected_tables.count == 0
-      attempts += 1
-      puts 'Please select at least one table' if attempts > 1
-      selected_tables = prompt.multi_select(
-        "Please select up to #{max} #{max > 1 ? 'objects' : 'object'} for your API",
-        available_tables.map(&:name),
-        max: max,
-        per_page: 15,
-        echo: false,
-      )
+    def tables
+      @tables ||= determine_tables
     end
-    selected_tables.map do |name|
-      available_tables.detect { |t| t.name == name }
+
+    def raise_no_tables_error
+      raise "No Database tables found - please make sure to create at least one Mapping in Heroku Connect"
     end
-  end
+
+    def determine_tables
+      available_tables = DiscoverModels.new.new_tables
+      count = available_tables.count
+      raise_no_tables_error unless available_tables.any?
+   
+      prompt = TTY::Prompt.new
+      selected_tables = []
+      attempts = 0
+      while selected_tables.count == 0
+        attempts += 1
+        puts "Please select at least one table" if attempts > 1
+        selected_tables = prompt.multi_select(
+          "Please select up to #{max} #{max > 1 ? 'objects' : 'object'} for your API",
+          available_tables.map(&:name),
+          max: max,
+          per_page: 15,
+          echo: false,
+        )
+      end
+      selected_tables.map do |name|
+        available_tables.detect { |t| t.name == name }
+      end
+    end
 end
