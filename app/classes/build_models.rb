@@ -3,19 +3,13 @@
 require "rails/generators"
 
 class BuildModels
-  attr_reader :num
+  attr_reader :max
 
-  def initialize(num)
-    @num = num
+  def initialize(max)
+    @max = max
   end
 
   def call    
-    available_tables = DiscoverModels.new.new_tables
-    count = available_tables.count
-    tables = available_tables[0..(num-1)]
-    new_count = tables.count
-    puts "Generating #{new_count} of #{count} available objects as your LaunchPad add-on plan only allows for #{num} Mapping" if new_count < count
-    raise 'No Database tables found - please make sure to create at least one Mapping in Heroku Connect' unless tables.any?
     model_names = []
     tables.each do |table|
       columns = table.attributes.map { |attr| "#{attr.name}:#{attr.type}" }
@@ -29,7 +23,6 @@ class BuildModels
       script = script.join.split(" ")
       script[3] = model_name
       final_script = script.join(" ")
-      
       system("rails generate salesforce_model #{model_name} #{table.name}")
       system(final_script)
       system("rails generate decanter #{model_name} #{columns_string}")
@@ -39,5 +32,39 @@ class BuildModels
     end
     system("rails g routes #{model_names.join(' ')}")
     system("rake docs:generate")
+    SetMappingsUsed.new(tables.count).call
   end
+
+  private
+    def tables
+      @tables ||= determine_tables
+    end
+
+    def raise_no_tables_error
+      raise "No Database tables found - please make sure to create at least one Mapping in Heroku Connect"
+    end
+
+    def determine_tables
+      available_tables = DiscoverModels.new.new_tables
+      count = available_tables.count
+      raise_no_tables_error unless available_tables.any?
+   
+      prompt = TTY::Prompt.new
+      selected_tables = []
+      attempts = 0
+      while selected_tables.count == 0
+        attempts += 1
+        puts "Please select at least one table" if attempts > 1
+        selected_tables = prompt.multi_select(
+          "Please select up to #{max} #{max > 1 ? 'objects' : 'object'} for your API",
+          available_tables.map(&:name),
+          max: max,
+          per_page: 15,
+          echo: false,
+        )
+      end
+      selected_tables.map do |name|
+        available_tables.detect { |t| t.name == name }
+      end
+    end
 end

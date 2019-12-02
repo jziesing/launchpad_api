@@ -1,4 +1,3 @@
-## Overview
 The [LaunchPad](https://elements.heroku.com/addons/launchpad) add-on allows Salesforce customers to build and launch integrated web and mobile applications 2x faster. The add-on is used in conjunction with Heroku Connect, which means that a Salesforce customer can generate a REST API based on their existing Salesforce schema, greatly accelerating the process of building a Salesforce-integrated web or mobile solution.
 
 Unlike traditional add-ons, this add-on is only useful when attached to the [LaunchPad API](github.com/launchpadlab/launchpad_api) application that is generated from the [Deploy to Heroku](#1-deploy-launchpad-api-to-heroku) button. The add-on itself simply provides a license key. Without a license key, the installation process will not succeed.
@@ -22,7 +21,7 @@ Unlike other Heroku add-ons that can be attached to an existing Heroku app, the 
 
 1. [Deploy LaunchPad API to Heroku](#1-deploy-launchpad-api-to-heroku)
 2. [Configure Heroku Connect](#2-configure-heroku-connect)
-3. [Setup API locally](#3-setup-api-locally)
+3. [Set up API locally](#3-set-up-api-locally)
 4. [Deploy the API](#4-deploy-the-api)
 
 ### 1. Deploy LaunchPad API to Heroku
@@ -32,21 +31,22 @@ Unlike other Heroku add-ons that can be attached to an existing Heroku app, the 
 
 ### 2. Configure Heroku Connect
 
-> info
+>note
 > We highly recommend using a Sandbox Salesforce environment until you are comfortable with how the add-on is performing. Once testing is complete, you can generate a second Heroku app using the Deploy to Heroku button and link that app to your Production Salesforce environment in Heroku Connect.
 
-1. Click "Manage App" to go to your app's Heroku dashboard
-2. Click "Resources" then "Heroku Connect"
-3. Click "Setup Connection" then "Next"
+1. Click **`Manage App`** to go to your app's Heroku dashboard
+2. Click **`Resources`** then "Heroku Connect"
+3. Click **`Setup Connection`** then **`Next`**
 4. Authorize your Salesforce account.
-5. Click "Mappings" then "Create Mapping" (you'll do this for each object you want to sync)
+5. Click **`Mappings`** then **`Create Mapping`** (you'll do this for each object you want to sync)
 6. Select the object you want to sync (e.g. "Account")
-7. Select "Accelerate Polling" for optimal performance
+7. Select **`Accelerate Polling`** for optimal performance
 8. Pick the columns you'd like to sync
-9. Click "Save"
+9. Click **`Save`**
 
-### 3. Setup API Locally
-> info
+### 3. Set up API locally
+
+>note
 > The API is a Ruby on Rails application that requires Ruby to be installed on your machine. Please make sure Ruby v2.5.1 is installed before proceeding.
 
 In the below commands, replace `APPNAME` with the name of the Heroku app you just deployed:
@@ -59,10 +59,16 @@ $ heroku git:remote -a APPNAME
 $ heroku addons:create launchpad:test
 $ bundle exec rake launchpad:pull
 $ bundle exec rake launchpad:install
-$ rails s
 ```
 
-Visit localhost:3000/api/docs in your browser to view the API documentation.
+Follow the terminal instructions to select the objects you'd like to add to the API.
+
+Finally, start your server to view the API documentation:
+
+```
+$ rails s
+$ open localhost:3000/api/docs
+```
 
 ### 4. Deploy the API
 
@@ -111,7 +117,7 @@ To learn more about Active Record, please read the [Active Record Basics Guide](
 ### Postgres
 By default the LaunchPad API connects directly to your Heroku Postgres database in development mode. You can change this by modifying the `config/database.yml` file or simply changing the `DATABASE_URL` environment variable for a given environment. You can read more about configuring databases [here](https://edgeguides.rubyonrails.org/configuring.html#configuring-a-database) and managing environment variables [here](https://github.com/laserlemon/figaro).
 
-### Salesforce Integration
+### Salesforce integration
 The LaunchPad API depends on Heroku Connect for the Salesforce Integration. Each ORM object inherits from `app/models/salesforce_model.rb` to provide one place to manage the integration with Salesforce.
 
 ### Security
@@ -145,8 +151,8 @@ $ rails c
 $ Base64.strict_encode64("launchpad:#{ENV['LAUNCHPAD_LICENSE_KEY']}")
 ```
 
-### API Documentation
-The API Documentation is generated using [RSpec API Doc Generator](https://github.com/zipmark/rspec_api_documentation). You can customize your API Documentation in `spec/acceptance/api/`. Please [read here](https://github.com/zipmark/rspec_api_documentation) to learn more about creating and modifying your API Documentation.
+### API documentation
+The API documentation is generated using [RSpec API Doc Generator](https://github.com/zipmark/rspec_api_documentation). You can customize your API Documentation in `spec/acceptance/api/`. Please [read here](https://github.com/zipmark/rspec_api_documentation) to learn more about creating and modifying your API Documentation.
 
 ### Pagination
 The LaunchPad API leverages [Kaminari](https://github.com/kaminari/kaminari) in conjunction with the [API Pagination gem](https://github.com/davidcelis/api-pagination) to provide pagination within your API. This approach follows the proposed [RFC-8288](https://tools.ietf.org/html/rfc8288) standard for Web linking by using headers for pagination instead of the response body.
@@ -157,7 +163,7 @@ Serialization allows the LaunchPad API to define the JSON that is returned for e
 The LaunchPad API leverages the popular [Active Model Serializers](https://github.com/rails-api/active_model_serializers) for providing this serialization behavior. You can customize this behavior in `app/serializers/`.
 
 
-### Params Sanitization and Transformation
+### Params sanitization and transformation
 One of the core responsibilities for every REST API is to handle incoming data in a secure and reliable way. There are two core aspects to accomplishing this:
 
 1. Remove all incoming data that is not explicitly whitelisted by the application
