@@ -29,19 +29,19 @@ gem "rspec_api_documentation"
 gem "apitome"
 gem "kaminari"
 gem "api-pagination"
-gem "tty-prompt"
 
 group :development, :test do
   gem "rspec-rails", "~> 3.0"
   gem "pry-rails", "~> 0.3"
   gem "faker", "~> 1.0"
   gem "factory_bot_rails", "~> 5.0"
-  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]  
 end
 
 group :development do
   gem "bullet", "~> 6.0"
   gem "listen", ">= 3.0.5", "< 3.2"
+  gem "tty-prompt"
 end
 
 group :test do
