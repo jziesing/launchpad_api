@@ -29,6 +29,7 @@ gem "rspec_api_documentation"
 gem "apitome"
 gem "kaminari"
 gem "api-pagination"
+gem "tty-prompt"
 
 group :development, :test do
   gem "rspec-rails", "~> 3.0"
