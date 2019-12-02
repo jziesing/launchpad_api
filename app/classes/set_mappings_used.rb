@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SetObjectsUsed
+class SetMappingsUsed
   include HTTParty
   base_uri "https://launchpad-accelerator.herokuapp.com"
 

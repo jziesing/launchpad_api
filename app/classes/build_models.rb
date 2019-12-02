@@ -32,7 +32,7 @@ class BuildModels
     end
     system("rails g routes #{model_names.join(' ')}")
     system("rake docs:generate")
-    SetObjectsUsed.new(tables.count).call
+    SetMappingsUsed.new(tables.count).call
   end
 
   private
