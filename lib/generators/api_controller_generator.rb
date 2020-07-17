@@ -5,7 +5,7 @@ class ApiControllerGenerator < Rails::Generators::Base
 
   def create_model_file
     create_file "app/controllers/api/#{collection_name}_controller.rb", <<-FILE
-class Api::#{model_name.pluralize}Controller < ApplicationController
+class Api::#{model_name.pluralize}Controller < ApiController
   def index
     @#{collection_name} = paginate #{model_name}.all
     authorize!(:read, @#{collection_name})
