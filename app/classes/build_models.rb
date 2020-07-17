@@ -30,8 +30,8 @@ class BuildModels
       system("rails generate serializer #{model_name} #{columns_string}")
       system("rails g api_controller #{model_name}")
       system("rails g api_docs #{model_name}")
-      create_admin_user
     end
+    create_admin_user
     system("rails g routes #{model_names.join(' ')}")
     system("rake docs:generate")
     SetMappingsUsed.new(tables.count).call
