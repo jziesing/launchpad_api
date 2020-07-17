@@ -6,6 +6,8 @@ class RoutesGenerator < Rails::Generators::Base
   def create_model_file
     create_file "config/routes.rb", <<-FILE
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)  
   namespace :api do   
     #{resources}
   end

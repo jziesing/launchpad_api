@@ -24,6 +24,7 @@ class BuildModels
       script[3] = model_name
       final_script = script.join(" ")
       system("rails generate salesforce_model #{model_name} #{table.name}")
+      system("rails generate active_admin:resource #{model_name}")
       system(final_script)
       system("rails generate decanter #{model_name} #{columns_string}")
       system("rails generate serializer #{model_name} #{columns_string}")
