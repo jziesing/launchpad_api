@@ -11,6 +11,8 @@ namespace :launchpad do
         out_file.puts line if line.include?("DATABASE_URL") || line.include?("LAUNCHPAD_LICENSE_KEY")
       end
       out_file.puts "LAUNCHPAD_INSTALLED:      'true'"
+      out_file.puts "ADMIN_EMAIL:              'admin@example.com'"
+      out_file.puts "ADMIN_PASSWORD:           'password'"
     end
     puts "done."
   end

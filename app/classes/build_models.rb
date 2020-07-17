@@ -30,6 +30,7 @@ class BuildModels
       system("rails generate serializer #{model_name} #{columns_string}")
       system("rails g api_controller #{model_name}")
       system("rails g api_docs #{model_name}")
+      create_admin_user
     end
     system("rails g routes #{model_names.join(' ')}")
     system("rake docs:generate")
@@ -67,5 +68,13 @@ class BuildModels
       selected_tables.map do |name|
         available_tables.detect { |t| t.name == name }
       end
+    end
+
+    def create_admin_user
+      AdminUser.create!(
+        email: ENV["ADMIN_EMAIL"],
+        password: ENV["ADMIN_PASSWORD"],
+        password_confirmation: ENV["ADMIN_PASSWORD"]
+      )
     end
 end
