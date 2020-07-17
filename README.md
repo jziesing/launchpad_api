@@ -61,16 +61,38 @@ $ bundle exec rake launchpad:pull
 $ bundle exec rake launchpad:install
 ```
 
-Follow the terminal instructions to select the objects you'd like to add to the API.
+Follow the terminal instructions to select the objects you'd like to add to the API. Once that completes, start your server:
 
-Finally, start your server to view the API documentation:
 
 ```
 $ rails s
+```
+
+To access the Admin Panel:
+
+```
+$ open localhost:3000
+```
+
+>note
+> By default, your email and password for the admin panel is set to `admin@example.com` and `password`, respectively. We'll show you how to change these to something more secure in the next step.
+
+To visit the API documentation:
+
+```
 $ open localhost:3000/api/docs
 ```
 
 ### 4. Deploy the API
+
+Before deploying to Heroku, we highly recommend that you modify the following environment variables in Heroku: `ADMIN_EMAIL` and `ADMIN_PASSWORD`. To do so, execute the following commands after modifying the email and password:
+
+```
+$ heroku config:set ADMIN_EMAIL=admin@example.com
+$ heroku config:set ADMIN_PASSWORD=password
+```
+
+Now you're ready to deploy. Please enter these commands:
 
 ```term
 git add -A
