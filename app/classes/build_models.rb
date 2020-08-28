@@ -9,7 +9,7 @@ class BuildModels
     @max = max
   end
 
-  def call    
+  def call
     model_names = []
     tables.each do |table|
       columns = table.attributes.map { |attr| "#{attr.name}:#{attr.type}" }
@@ -24,14 +24,12 @@ class BuildModels
       script[3] = model_name
       final_script = script.join(" ")
       system("rails generate salesforce_model #{model_name} #{table.name}")
-      system("rails generate active_admin:resource #{model_name}")
       system(final_script)
       system("rails generate decanter #{model_name} #{columns_string}")
       system("rails generate serializer #{model_name} #{columns_string}")
       system("rails g api_controller #{model_name}")
       system("rails g api_docs #{model_name}")
     end
-    create_admin_user
     system("rails g routes #{model_names.join(' ')}")
     system("rake docs:generate")
     SetMappingsUsed.new(tables.count).call
@@ -50,7 +48,7 @@ class BuildModels
       available_tables = DiscoverModels.new.new_tables
       count = available_tables.count
       raise_no_tables_error unless available_tables.any?
-   
+
       prompt = TTY::Prompt.new
       selected_tables = []
       attempts = 0
@@ -68,13 +66,5 @@ class BuildModels
       selected_tables.map do |name|
         available_tables.detect { |t| t.name == name }
       end
-    end
-
-    def create_admin_user
-      AdminUser.create!(
-        email: ENV["ADMIN_EMAIL"],
-        password: ENV["ADMIN_PASSWORD"],
-        password_confirmation: ENV["ADMIN_PASSWORD"]
-      )
     end
 end
