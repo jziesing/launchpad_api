@@ -16,7 +16,7 @@ ActiveAdmin.setup do |config|
   #
   # Note: Aim for an image that's 21px high so it fits in the header.
   #
-  # config.site_title_image = "logo.png"
+  config.site_title_image = "Blue-Horizontal-LPL-Logo-Small.jpg"
 
   # == Default Namespace
   #
@@ -175,6 +175,12 @@ ActiveAdmin.setup do |config|
   # config.favicon = 'favicon.ico'
 
   # == Meta Tags
+
+  # Arctic Theme Gem
+  meta_tags_options = { viewport: 'width=device-width, initial-scale=1' }
+  config.meta_tags = meta_tags_options
+  config.meta_tags_for_logged_out_pages = meta_tags_options
+
   #
   # Add additional meta tags to the head element of active admin pages.
   #

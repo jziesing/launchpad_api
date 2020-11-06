@@ -7,9 +7,17 @@
 // For example, to change the sidebar width:
 // $sidebar-width: 242px;
 
-// Active Admin's got SASS!
+
 @import "active_admin/mixins";
-@import "active_admin/base";
+
+$primary-color: #1E60BD;
+// Use Arctic theme instead of the base ActiveAdmin file
+@import "arctic_admin/base";
+
+.header .site_title #site_title_image {
+  height: 50px;
+  margin-top: 5px;
+}
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:

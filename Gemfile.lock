@@ -71,6 +71,10 @@ GEM
       railties
     arbre (1.2.1)
       activesupport (>= 3.0.0)
+    arctic_admin (3.2.2)
+      activeadmin (>= 1.1.0, < 3.0)
+      font-awesome-sass (~> 5.0)
+      jquery-rails
     arel (9.0.0)
     ast (2.4.0)
     bcrypt (3.1.13)
@@ -112,6 +116,8 @@ GEM
     ffi (1.11.1)
     figaro (1.1.1)
       thor (~> 0.14)
+    font-awesome-sass (5.15.1)
+      sassc (>= 1.11)
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
@@ -337,6 +343,7 @@ DEPENDENCIES
   activeadmin
   api-pagination
   apitome
+  arctic_admin
   bcrypt (~> 3.0)
   bootsnap (>= 1.1.0)
   bullet (~> 6.0)
@@ -373,7 +380,7 @@ DEPENDENCIES
   tzinfo-data
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.6.5p114
 
 BUNDLED WITH
-   2.0.2
+   2.1.4
