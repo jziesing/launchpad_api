@@ -20,3 +20,19 @@ InsurancePolicy.create(
   expiration_date: Date.today + 7.months,
   policy_type: 'Auto',
 )
+
+Claim.create(
+  claim_number: '123918274',
+  initiation_date: Date.today,
+  amount: 500.00,
+  approved_amount: 400.00,
+  claim_reason: 'Car accident',
+)
+
+Claim.create(
+  claim_number: '2123871273',
+  initiation_date: Date.today - 2.months,
+  amount: 2000.00,
+  approved_amount: 2000.00,
+  claim_reason: 'Car accident',
+)
