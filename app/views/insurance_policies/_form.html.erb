@@ -1,0 +1,47 @@
+<%= form_with(model: insurance_policy, local: true) do |form| %>
+  <% if insurance_policy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(insurance_policy.errors.count, "error") %> prohibited this insurance_policy from being saved:</h2>
+
+      <ul>
+      <% insurance_policy.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :policy_number %>
+    <%= form.text_field :policy_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :policy_type %>
+    <%= form.text_field :policy_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :effective_date %>
+    <%= form.date_select :effective_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :expiration_date %>
+    <%= form.date_select :expiration_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :premium_amount %>
+    <%= form.text_field :premium_amount %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

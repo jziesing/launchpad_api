@@ -3,3 +3,20 @@
 if AdminUser.count == 0 # only run once
   AdminUser.create(email: 'admin@example.com', password: 'password')
 end
+
+InsurancePolicy.create(
+  name: 'Tesla Model 3',
+  policy_number: '412983819',
+  effective_date: Date.today,
+  expiration_date: Date.today + 1.year,
+  premium_amount: 200.00,
+  policy_type: 'Auto',
+)
+
+InsurancePolicy.create(
+  name: 'Volvo SUV',
+  policy_number: '1928471829',
+  effective_date: Date.today - 5.months,
+  expiration_date: Date.today + 7.months,
+  policy_type: 'Auto',
+)

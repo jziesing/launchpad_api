@@ -47,7 +47,7 @@ module LaunchpadApi
     config.middleware.use Rack::MethodOverride
 
     # Skip views, helpers and assets when generating a new resource.
-    config.api_only = true
+    config.api_only = false
 
     # MAILER SETTINGS
     # config.action_mailer.delivery_method = :smtp

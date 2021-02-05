@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @insurance_policy.name %>
+</p>
+
+<p>
+  <strong>Policy number:</strong>
+  <%= @insurance_policy.policy_number %>
+</p>
+
+<p>
+  <strong>Policy type:</strong>
+  <%= @insurance_policy.policy_type %>
+</p>
+
+<p>
+  <strong>Effective date:</strong>
+  <%= @insurance_policy.effective_date %>
+</p>
+
+<p>
+  <strong>Expiration date:</strong>
+  <%= @insurance_policy.expiration_date %>
+</p>
+
+<p>
+  <strong>Premium amount:</strong>
+  <%= @insurance_policy.premium_amount %>
+</p>
+
+<%= link_to 'Edit', edit_insurance_policy_path(@insurance_policy) %> |
+<%= link_to 'Back', insurance_policies_path %>
