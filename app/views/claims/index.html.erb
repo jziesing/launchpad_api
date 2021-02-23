@@ -1,35 +1,39 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Claims</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Claim number</th>
-      <th>Initiation date</th>
-      <th>Amount</th>
-      <th>Approved amount</th>
-      <th>Claim reason</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @claims.each do |claim| %>
-      <tr>
-        <td><%= claim.claim_number %></td>
-        <td><%= claim.initiation_date %></td>
-        <td><%= claim.amount %></td>
-        <td><%= claim.approved_amount %></td>
-        <td><%= claim.claim_reason %></td>
-        <td><%= link_to 'Show', claim %></td>
-        <td><%= link_to 'Edit', edit_claim_path(claim) %></td>
-        <td><%= link_to 'Destroy', claim, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Claim', new_claim_path %>
+<section class="card">
+  <header>
+    <h1>Claims</h1>
+    <%= link_to '+ New Claim', new_claim_path, class: 'button-primary' %>
+  </header>
+  <div class="card-inner">
+    <p id="notice"><%= notice %></p>
+    <div class="scrollable-table">  
+      <table class="table-with-action-column">
+        <thead>
+          <tr>
+            <th>Claim number</th>
+            <th>Initiation date</th>
+            <th>Amount</th>
+            <th>Approved amount</th>
+            <th>Claim reason</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @claims.each do |claim| %>
+            <tr>
+              <td><%= claim.claim_number %></td>
+              <td><%= claim.initiation_date %></td>
+              <td><%= claim.amount %></td>
+              <td><%= claim.approved_amount %></td>
+              <td><%= claim.claim_reason %></td>
+              <td>
+                <%= link_to 'Show', claim %>
+                <%= link_to 'Edit', edit_claim_path(claim) %>
+                <%= link_to 'Delete', claim, method: :delete, data: { confirm: 'Are you sure?' } %>  
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

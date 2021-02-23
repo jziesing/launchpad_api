@@ -1,5 +1,10 @@
-<h1>New Claim</h1>
+<%= link_to 'Back', claims_path, class: 'back-link'  %>
 
-<%= render 'form', claim: @claim %>
-
-<%= link_to 'Back', claims_path %>
+<section class="card">
+	<header>
+		<h1>New Claim</h1>
+	</header>
+	<div class="card-inner">
+		<%= render 'form', claim: @claim %>
+	</div>
+</section>

@@ -1,6 +1,11 @@
-<h1>Editing Insurance Policy</h1>
+<%= link_to 'Back', insurance_policies_path, class: 'back-link' %>
 
-<%= render 'form', insurance_policy: @insurance_policy %>
-
-<%= link_to 'Show', @insurance_policy %> |
-<%= link_to 'Back', insurance_policies_path %>
+<section class="card">
+	<header>
+		<h1>Editing Insurance Policy</h1>
+		<%= link_to 'Show', @insurance_policy, class: 'button-primary-outline' %> 
+	</header>
+	<div class="card-inner">
+		<%= render 'form', insurance_policy: @insurance_policy %>
+	</div>
+</section>

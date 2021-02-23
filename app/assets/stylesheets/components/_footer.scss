@@ -1,0 +1,16 @@
+/*-----------------------
+Footer
+-----------------------*/
+
+.page-footer{
+	text-align: center;
+	padding: 20px;
+
+	@media #{$tablet} {
+		padding: 20px 30px;
+	}
+
+	p{
+		@include s-small;
+	}
+}

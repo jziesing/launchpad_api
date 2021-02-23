@@ -11,37 +11,41 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <fieldset>
     <%= form.label :name %>
     <%= form.text_field :name %>
-  </div>
+  </fieldset>
 
-  <div class="field">
+  <fieldset>
     <%= form.label :policy_number %>
     <%= form.text_field :policy_number %>
-  </div>
+  </fieldset>
 
-  <div class="field">
+  <fieldset>
     <%= form.label :policy_type %>
     <%= form.text_field :policy_type %>
-  </div>
+  </fieldset>
 
-  <div class="field">
+  <fieldset>
     <%= form.label :effective_date %>
-    <%= form.date_select :effective_date %>
-  </div>
+    <div class="date-field">
+      <%= form.date_select :effective_date %>
+    </div>
+  </fieldset>
 
-  <div class="field">
+  <fieldset>
     <%= form.label :expiration_date %>
-    <%= form.date_select :expiration_date %>
-  </div>
+    <div class="date-field">
+      <%= form.date_select :expiration_date %>
+    </div>
+  </fieldset>
 
-  <div class="field">
+  <fieldset>
     <%= form.label :premium_amount %>
     <%= form.text_field :premium_amount %>
-  </div>
+  </fieldset>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :class => 'button-primary' %>
   </div>
 <% end %>

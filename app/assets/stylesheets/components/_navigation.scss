@@ -1,0 +1,37 @@
+.side-navigation{
+  background-color: $primary-darker;
+  display: none;
+  height: 100vh;
+  left: 0px;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 250px;
+
+  @media #{$tablet-landscape} {
+    display: block;
+  }
+
+  .logo{
+    display: block;
+    margin: 50px auto;
+    width: 50%;
+  }
+
+
+  a{
+    color: $white-base;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    @include rem(padding, 12px 20px);
+    opacity: 0.75;
+    text-decoration: none;
+    width: 100%;
+
+    &:hover{
+      opacity: 1;
+      background-color: $primary-base;
+    }
+  }
+}

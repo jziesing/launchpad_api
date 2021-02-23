@@ -1,29 +1,34 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Claim number:</strong>
-  <%= @claim.claim_number %>
-</p>
-
-<p>
-  <strong>Initiation date:</strong>
-  <%= @claim.initiation_date %>
-</p>
-
-<p>
-  <strong>Amount:</strong>
-  <%= @claim.amount %>
-</p>
-
-<p>
-  <strong>Approved amount:</strong>
-  <%= @claim.approved_amount %>
-</p>
-
-<p>
-  <strong>Claim reason:</strong>
-  <%= @claim.claim_reason %>
-</p>
-
-<%= link_to 'Edit', edit_claim_path(@claim) %> |
-<%= link_to 'Back', claims_path %>
+<%= link_to 'Back', claims_path, class: 'back-link'  %>
+<section class="card">
+  <header>
+    <h1>Claim Details</h1>
+    <%= link_to 'Edit', edit_claim_path(@claim), class: 'button-primary-outline' %>
+  </header>
+  <div class="card-inner">  
+    <p id="notice"><%= notice %></p>
+    <table class="summary-table">
+      <tbody>
+        <tr>
+          <td>Claim number:</td>
+          <td><%= @claim.claim_number %></td>
+        </tr>
+        <tr>
+          <td>Initiation date:</td>
+          <td><%= @claim.initiation_date %></td>
+        </tr>
+        <tr>
+          <td>Amount:</td>
+          <td><%= @claim.amount %></td>
+        </tr>
+        <tr>
+          <td>Approved amount:</td>
+          <td><%= @claim.approved_amount %></td>
+        </tr>
+        <tr>
+          <td>Claim reason:</td>
+          <td><%= @claim.claim_reason %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

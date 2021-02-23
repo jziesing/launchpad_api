@@ -11,32 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <fieldset>
     <%= form.label :claim_number %>
     <%= form.text_field :claim_number %>
-  </div>
+  </fieldset>
 
-  <div class="field">
+  <fieldset>
     <%= form.label :initiation_date %>
-    <%= form.date_select :initiation_date %>
-  </div>
+    <div class="date-field">
+      <%= form.date_select :initiation_date %>
+    </div>
+  </fieldset>
 
-  <div class="field">
+  <fieldset>
     <%= form.label :amount %>
     <%= form.text_field :amount %>
-  </div>
+  </fieldset>
 
-  <div class="field">
+  <fieldset>
     <%= form.label :approved_amount %>
     <%= form.text_field :approved_amount %>
-  </div>
+  </fieldset>
 
-  <div class="field">
+  <fieldset>
     <%= form.label :claim_reason %>
     <%= form.text_area :claim_reason %>
-  </div>
+  </fieldset>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit(class: 'button-primary')  %>
   </div>
 <% end %>

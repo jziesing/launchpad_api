@@ -1,37 +1,43 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Insurance Policies</h1>
+<section class="card">
+  <header>
+    <h1>Insurance Policies</h1>
+    <%= link_to '+ New Insurance Policy', new_insurance_policy_path, class: 'button-primary' %>
+  </header>
+  <div class="card-inner">  
+    <p id="notice"><%= notice %></p>
+    <div class="scrollable-table">  
+      <table class="table-with-action-column">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Policy number</th>
+            <th>Policy type</th>
+            <th>Effective date</th>
+            <th>Expiration date</th>
+            <th>Premium amount</th>
+            <th></th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Policy number</th>
-      <th>Policy type</th>
-      <th>Effective date</th>
-      <th>Expiration date</th>
-      <th>Premium amount</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @insurance_policies.each do |insurance_policy| %>
-      <tr>
-        <td><%= insurance_policy.name %></td>
-        <td><%= insurance_policy.policy_number %></td>
-        <td><%= insurance_policy.policy_type %></td>
-        <td><%= insurance_policy.effective_date %></td>
-        <td><%= insurance_policy.expiration_date %></td>
-        <td><%= insurance_policy.premium_amount %></td>
-        <td><%= link_to 'Show', insurance_policy %></td>
-        <td><%= link_to 'Edit', edit_insurance_policy_path(insurance_policy) %></td>
-        <td><%= link_to 'Destroy', insurance_policy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Insurance Policy', new_insurance_policy_path %>
+        <tbody>
+          <% @insurance_policies.each do |insurance_policy| %>
+            <tr>
+              <td><%= insurance_policy.name %></td>
+              <td><%= insurance_policy.policy_number %></td>
+              <td><%= insurance_policy.policy_type %></td>
+              <td><%= insurance_policy.effective_date %></td>
+              <td><%= insurance_policy.expiration_date %></td>
+              <td><%= insurance_policy.premium_amount %></td>
+              <td>
+                <%= link_to 'Show', insurance_policy %>
+                <%= link_to 'Edit', edit_insurance_policy_path(insurance_policy) %>
+                <%= link_to 'Delete', insurance_policy, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

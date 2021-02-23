@@ -1,0 +1,81 @@
+/*-----------------------
+Table
+-----------------------*/
+
+table{
+  table-layout: fixed;
+  width: 100%;
+
+  tr{
+    border-bottom: 1px solid $grey-light;
+  }
+
+  th, td {
+    display: table-cell;
+    @include rem(margin, 15px 5px);
+    @include rem(padding, 18px 10px);
+    @include s-base;
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  th{
+    background-color: lighten($grey-light, 3%);
+  }
+
+  th, td:before {
+    color: $grey-base;
+    font-weight: $bold;
+    @include s-base;
+  }
+
+  td{
+    a:not(:last-child){
+      margin-right: 10px;
+    }
+  }
+
+  th{
+    color: $black-base;
+    width: 100%;
+  }
+
+  tbody{
+    overflow: auto;
+  }
+}
+
+.scrollable-table{
+  overflow: auto;
+}
+
+.summary-table{
+  tr:first-child{
+    border-top: 1px solid $grey-light;
+  }
+
+  td:first-child{  
+    border-right: 1px solid $grey-light;
+    background-color: lighten(#f0f2f5, 3%);
+    font-weight: 700;
+
+    @media #{$tablet} {
+      width: 200px;
+    }
+  }
+}
+
+.table-with-action-column{
+  th{
+    width: 200px;
+
+    @media #{$tablet} {
+      width: auto;
+    }
+  }
+
+  th:last-child{
+    white-space: nowrap;
+    width: 175px;
+  }
+}

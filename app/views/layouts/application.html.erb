@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
   <head>
     <title>LaunchPad Accelerator</title>
     <%= csrf_meta_tags %>
@@ -8,15 +8,32 @@
     
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
-    <nav>
-      <%= link_to 'Insurance Policies', insurance_policies_path %>
-      <%= link_to 'Claims', claims_path %>
-    </nav>
+    <aside class="side-navigation">
+      <%= image_tag 'logo.svg', class: 'logo', alt: 'Logo' %>
+      <nav>
+        <%= link_to 'Insurance Policies', insurance_policies_path %>
+        <%= link_to 'Claims', claims_path %>
+      </nav>
+    </aside>
     <div class="notice"><%= notice %></div>
     <div class="alert"><%= alert %></div>
-  <%= yield %>
+    <main id="main-content">
+      <header class="page-header">
+        <button>
+          <%= image_tag 'user.svg', class: 'logo', alt: 'Logo' %>
+          <span>My Account</span>
+        </button>
+      </header>
+      <div class="main-block-container">
+        <%= yield %>
+      </div>
+      <footer class="page-footer">
+        <p>©<%= Time.zone.now.year %> All Rights Reserved.</p>
+      </footer>
+    </main>
   </body>
 </html>

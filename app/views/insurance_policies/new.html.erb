@@ -1,5 +1,13 @@
-<h1>New Insurance Policy</h1>
+<%= link_to 'Back', insurance_policies_path, class: 'back-link' %>
 
-<%= render 'form', insurance_policy: @insurance_policy %>
+<section class="card">
+  <header>
+	<h1>New Insurance Policy</h1>
+  </header>
+  <div class="card-inner">  
+	<%= render 'form', insurance_policy: @insurance_policy %>
+  </div>
+</section>
 
-<%= link_to 'Back', insurance_policies_path %>
+
+
