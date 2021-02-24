@@ -18,7 +18,7 @@
       </a>
       <nav>
         <a href="/">Dashboard</a>
-        <% FindModels.new.plural_names.each do |model_plural| %>
+        <% plural_model_names.each do |model_plural| %>
           <%= link_to model_plural.titleize, "/salesforce/#{model_plural}" %>
         <% end %>
       </nav>

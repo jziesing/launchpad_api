@@ -3,7 +3,7 @@ class FindModels
   
   def folder
     # iterate over all files in folder
-    File.join(RAILS_ROOT, "app", "models", "salesforce")
+    File.join(Rails.root, "app", "models", "salesforce")
   end
 
   def models
