@@ -372,6 +372,7 @@ DEPENDENCIES
   rubocop
   rubocop-performance
   rubocop-rails
+  sassc-rails (~> 2.1)
   schema_to_scaffold
   sentry-raven (~> 2.0)
   shoulda-matchers (~> 3.1)
