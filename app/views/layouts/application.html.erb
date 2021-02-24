@@ -13,8 +13,11 @@
 
   <body>
     <aside class="side-navigation">
-      <%= image_tag 'logo.svg', class: 'logo', alt: 'Logo' %>
+      <a href="/" class="logo">
+        <%= image_tag 'logo.svg', alt: 'Logo' %>
+      </a>
       <nav>
+        <a href="/">Dashboard</a>
         <%= link_to 'Insurance Policies', insurance_policies_path %>
         <%= link_to 'Claims', claims_path %>
       </nav>

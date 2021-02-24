@@ -15,9 +15,15 @@
   .logo{
     display: block;
     margin: 50px auto;
+    padding: 0px;
     width: 50%;
-  }
 
+    a{
+      &:hover{
+        background-color: transparent;
+      }
+    }
+  }
 
   a{
     color: $white-base;
@@ -30,8 +36,8 @@
     width: 100%;
 
     &:hover{
-      opacity: 1;
       background-color: $primary-base;
+      opacity: 1;
     }
   }
 }

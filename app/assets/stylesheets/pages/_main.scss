@@ -20,6 +20,10 @@ main{
 
   .main-block-container{
     min-height: calc(100vh - 136px);
+
+    h1{
+      font-size: 20px;
+    }
   }
 }
 
@@ -54,16 +58,11 @@ hr{
 }
 
 .page-header{
+  align-items: center;
   background-color: $white-base;
   border-bottom: 1px solid darken(#f0f2f5, 5%);
-  // padding: 10px 20px;
-  height: 70px;
   display: flex;
-  align-items: center;
-
-  @media #{$tablet} {
-    // padding: 10px 30px;
-  }
+  height: 70px;
 
   button{
     align-items: center;
@@ -137,6 +136,23 @@ hr{
     form{
       @include center;
       max-width: 700px;
+    }
+
+    span{
+      font-size: 35px;
+    }
+  }
+}
+
+.grid-card{
+  display: flex;
+
+  .card{
+    margin-bottom: 30px;
+    width: 100%;
+
+    &:not(:first-child){
+      margin-left: 20px;
     }
   }
 }
