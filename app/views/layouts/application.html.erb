@@ -1,18 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
   <head>
     <title>LaunchPad Accelerator</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://use.typekit.net/cjy6xbv.css"> <script>var et_site_url='https://launchpadlab.com';var et_post_id='6';function et_core_page_resource_fallback(a,b){"undefined"===typeof b&&(b=a.sheet.cssRules&&0===a.sheet.cssRules.length);b&&(a.onerror=null,a.onload=null,a.href?a.href=et_site_url+"/?et_core_page_resource="+a.id+et_post_id:a.src&&(a.src=et_site_url+"/?et_core_page_resource="+a.id+et_post_id))}</script>
-
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
+    <aside class="side-navigation">
+      <a href="/" class="logo">
+        <%= image_tag 'logo.svg', alt: 'Logo' %>
+      </a>
+      <nav>
+        <a href="/">Dashboard</a>
+        <% FindModels.new.call.each do |model_plural| %>
+          <%= link_to model_plural.titleize, "/salesforce/#{model_plural}" %>
+        <% end %>
+      </nav>
+    </aside>
     <div class="notice"><%= notice %></div>
     <div class="alert"><%= alert %></div>
-  <%= yield %>
+    <main id="main-content">
+      <header class="page-header">
+        <button>
+          <%= image_tag 'user.svg', class: 'logo', alt: 'Logo' %>
+          <span>My Account</span>
+        </button>
+      </header>
+      <div class="main-block-container">
+        <%= yield %>
+      </div>
+      <footer class="page-footer">
+        <p>©<%= Time.zone.now.year %> All Rights Reserved.</p>
+      </footer>
+    </main>
   </body>
 </html>
