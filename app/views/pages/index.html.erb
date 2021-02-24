@@ -1,1 +1,13 @@
-Dashboard!
+<section>
+	<h1>Dashboard</h1>
+	<ul class="grid-card">
+    <% FindModels.new.models.each do |model| %>
+      <li class="card">
+        <div class="card-inner">
+          <span><%= model.count %></span>
+          <p>Number of <%= model.name.pluralize.titleize %></p>
+        </div>
+      </li>
+    <% end %>
+	</ul>
+</section> 

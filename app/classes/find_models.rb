@@ -1,8 +1,18 @@
 class FindModels
   def initialize;end
-  def call
+  
+  def folder
     # iterate over all files in folder
-    folder = File.join(RAILS_ROOT, "app", "models", "salesforce")      
+    File.join(RAILS_ROOT, "app", "models", "salesforce")
+  end
+
+  def models
+    Dir[File.join(folder, "*")].map do |filename|
+      File.basename(filename, '.rb').camelize.constantize
+    end    
+  end
+
+  def plural_names
     Dir[File.join(folder, "*")].map do |filename|
       File.basename(filename, '.rb').pluralize
     end
