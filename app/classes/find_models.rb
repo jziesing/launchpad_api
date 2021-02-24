@@ -15,7 +15,7 @@ class FindModels
   def plural_names
     Dir[File.join(folder, "*")].map do |filename|
       File.basename(filename, '.rb').pluralize
-      "salesforce_#{File.basename(filename, '.rb').pluralize}"
+      "#{File.basename(filename, '.rb').pluralize}"
     end
   end
 end
