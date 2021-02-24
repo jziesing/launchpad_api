@@ -1,9 +1,11 @@
 development:
   adapter: postgresql
   encoding: unicode
-  port: 5432
+  database: launchpad_api_dev
   pool: 5
-  schema_search_path: 'public,salesforce'
+  host: localhost
+  user: francirp
+  password: password
 
 test:
   adapter: postgresql
