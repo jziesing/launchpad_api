@@ -33,7 +33,6 @@ gem "activeadmin"
 gem "devise"
 gem "cancancan"
 gem 'arctic_admin'
-gem "sassc-rails", "~> 2.1"
 
 group :development, :test do
   gem "rspec-rails", "~> 3.0"
