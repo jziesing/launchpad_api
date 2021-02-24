@@ -1,0 +1,30 @@
+/*-----------------------
+Column Width
+-----------------------*/
+
+.row{
+  display: inline-block;
+  @include rem(margin-bottom, 20px);
+  width: 100%;
+
+  @for $i from 1 through 12 {
+    .col-#{$i} {
+      @include media($tablet){
+        @include span-columns($i of 12);
+      }
+    }
+  }
+}
+
+
+.content.with-sidebar .content-block-container .card{
+  &.row{
+    display: inline-block;
+    max-width: 100%;
+    width: 100%;
+
+    &.card{
+      margin-top: 0px;
+    }
+  }
+}

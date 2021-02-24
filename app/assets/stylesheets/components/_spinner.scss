@@ -1,0 +1,25 @@
+/*-----------------------
+Spinner
+-----------------------*/
+
+#spinner {
+  @include rem(margin-top, 50px);
+  text-align: center;
+
+  &:after{
+    border: 3px solid $blue-base;
+    border-radius: 50%;
+    border-top-color: $blue-base;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content:"";
+    display: inline-block;
+    height: 30px;
+    animation: spin 0.5s linear infinite;
+    width: 30px;
+  }
+}
+
+@keyframes(spin) {
+  to { transform: rotate(360deg); }
+}
