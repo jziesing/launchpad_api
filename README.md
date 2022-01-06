@@ -25,7 +25,7 @@ Unlike other Heroku add-ons that can be attached to an existing Heroku app, the 
 4. [Deploy the API](#4-deploy-the-api)
 
 ### 1. Deploy LaunchPad API to Heroku
-<a href="https://heroku.com/deploy?template=https://github.com/launchpadlab/launchpad_api" target="_blank">
+<a href="https://heroku.com/deploy?template=https://github.com/jziesing/launchpad_api" target="_blank">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
 
